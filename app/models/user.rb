@@ -44,6 +44,11 @@ class User < ActiveRecord::Base
     return user if user.has_password?(submitted_password)
     # handles the third case (password mismatch) implicitly, since in that case we reach the end of the method, which automatically returns nil. 
   end
+
+  def self.authenticate_with_salt(id, cookie_salt)
+    user = find_by_id(id)
+    (user && user.salt == cookie_salt) ? user : nil
+  end
   
 
   private
