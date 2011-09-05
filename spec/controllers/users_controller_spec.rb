@@ -49,7 +49,30 @@ describe UsersController do
       response.should have_selector("title", :content => "Sign up") 
  #have_selector needs the render_views line since it tests the view along with the action.
     end
-  end
+
+    it "should have a name field" do
+      get :new
+      response.should have_selector("input[name='user[name]'][type='text']")
+    end
+
+    it "should have an email field" do
+      get :new
+      response.should have_selector("input[name='user[email]'][type='text']")
+    end
+
+    it "should have a password field" do
+      get :new
+      response.should have_selector("input[name='user[password]'][type='password']")
+    end
+
+    it "should have a password confirmation field" do
+      get :new
+      response.should have_selector("input[name='user[password_confirmation]']
+                                          [type='password']") 
+    end
+    
+
+  end # of get new
 
   
   describe "POST 'create'" do #test the /signup form
