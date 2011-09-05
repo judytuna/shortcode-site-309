@@ -143,3 +143,8 @@ td.sidebar {
   margin-bottom: -15px;
 }
 
+/* wafer-thin css for the signup form */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+

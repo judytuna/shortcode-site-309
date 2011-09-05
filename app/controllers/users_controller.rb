@@ -5,7 +5,18 @@ class UsersController < ApplicationController
   end
 
   def new # page that allows for creation of a new user!!!
+    @user = User.new
     @title = "Sign up"
+  end
+
+  def create #method for saving new user to db
+    @user = User.new(params[:user])
+    if @user.save
+      #handle a successful save.
+    else
+      @title = "Sign up"
+      render 'new'
+    end
   end
 
 end
