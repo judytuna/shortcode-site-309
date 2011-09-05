@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>POVRay Shortcode Contest | <%= @title %></title>
-  <%= stylesheet_link_tag :all %>
+  <title><%= title %></title>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
-</head>
+  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+  <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+
+i</head>
 <body>
 
 <%= yield %>
