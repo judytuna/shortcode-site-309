@@ -121,6 +121,11 @@ describe UsersController do
         flash[:success].should =~  /welcome to the povray/i # =! compares strings to regular expressions and /i forces a case-insensitive match
       end
 
+      it "should sign the user in" do
+        post :create, :user => @attr
+        controller.should be_signed_in
+      end
+
     end #of describe "success"
 
   end #of describe POST 'create'

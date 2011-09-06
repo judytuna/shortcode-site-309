@@ -56,14 +56,28 @@ describe SessionsController do
         post :create, :session => @attr
         response.should redirect_to(user_path(@user))
       end
- 
-#      it "should have the right title" do
- #       post :create, :session => @attr
-  #      response.should have_selector("title", :content => "#{@attr.name}")
-   #   end
 
-  #    it "should have a flash.now message"
+=begin tests i thought were relevant, but are not
+      it "should have the right title" do
+        post :create, :session => @attr
+        response.should have_selector("title", :content => "#{@attr.name}")
+      end
+
+      it "should have a flash.now message"
+=end
+
     end #valid signin
   end #of POST 'create'    
+
+  describe "DELETE 'destroy'" do
+    
+    it "should sign a user out" do
+      test_sign_in(Factory(:user))
+      delete :destroy
+      controller.should_not be_signed_in
+      response.should redirect_to(root_path)
+    end
+  
+  end #of "DELETE 'destroy'"
 
 end
