@@ -32,8 +32,14 @@ module SessionsHelper
   end
 
   def deny_access #for authentication checks before edit/update
+    store_location #for friendly forwarding
     redirect_to signin_path, :notice => "Please sign in to access this page."
        #the ":notice" part is passing an options hash to the redirect_to function
+  end
+
+  def redirect_back_or(default) #allows you to set a default path when you call this
+    redirect_to(session[:return_to] || default)
+    clear_return_to
   end
 
   private
@@ -44,6 +50,15 @@ module SessionsHelper
 
     def remember_token
       cookies.signed[:remember_token] || [nil, nil] # if right is nil, return actual nil array
+    end
+
+    def store_location 
+      session[:return_to] = request.fullpath #puts the requested URL in the 
+         # session variable under the key :return_to !!!!!!!
+    end
+ 
+    def clear_return_to
+      session[:return_to] = nil
     end
 
 end
