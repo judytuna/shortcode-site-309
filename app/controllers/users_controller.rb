@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:edit, :update]
+  before_filter :correct_user, :only => [:edit, :update]
 
   def show # page that shows info about the user
     @user = User.find(params[:id])
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+ #   @user = User.find(params[:id]) -- removed when i added the correct_user function
     @title = "Edit user" 
   end
 
@@ -49,6 +50,10 @@ class UsersController < ApplicationController
     def authenticate
       deny_access unless signed_in?
     end
-  
 
+    def correct_user
+      @user = User.find(params[:id])  #this gets :id from the current url, right?
+      redirect_to(root_path) unless current_user?(@user) #current_user? is in sessions_helper
+    end
+  
 end

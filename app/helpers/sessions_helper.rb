@@ -27,6 +27,10 @@ module SessionsHelper
     #@current_user = nil #uh, if i call current_user though, will it do user_from_remember_token?!?!?!?!? gahhhhhhhhhhhhhhhhhh
   end 
 
+  def current_user?(user)
+    user == current_user
+  end
+
   def deny_access #for authentication checks before edit/update
     redirect_to signin_path, :notice => "Please sign in to access this page."
        #the ":notice" part is passing an options hash to the redirect_to function
