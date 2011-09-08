@@ -53,10 +53,12 @@ describe "LayoutLinks" do
   describe "when signed in" do
     before(:each) do
       @user = Factory(:user)
-      visit signin_path
-      fill_in :email, :with => @user.email
-      fill_in :password, :with => @user.password
-      click_button
+      #visit signin_path
+      #fill_in :email, :with => @user.email
+      #fill_in :password, :with => @user.password
+      #click_button
+      #exercise 9.6.1 http://ruby.railstutorial.org/chapters/sign-in-sign-out#sec:sign_in_out_exercises
+      integration_sign_in(@user)
     end
 
     it "should have a signout link" do
