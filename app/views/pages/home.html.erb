@@ -6,4 +6,9 @@
   to make a website for a POVRay shortcode contest!
 </p>
 
-<%= link_to "Sign up now!", '#', :class => "signup_button round" %>
+<% if signed_in? %>
+      	<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+<% else %>
+        <p><%= link_to "Sign up now!", signup_path, :class => "signup_button round" %></p>
+<% end %>
+
