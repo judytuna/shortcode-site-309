@@ -70,7 +70,21 @@ describe UsersController do
       response.should have_selector("input[name='user[password_confirmation]']
                                           [type='password']") 
     end
-    
+   
+    #exercise 10.6.3 - new 
+    describe "logged-in user" do
+      before(:each) do
+        @user = Factory(:user)
+        test_sign_in(@user)
+      end
+
+      it "should redirect 'new' to root" do
+        get :new
+        response.should redirect_to(root_path)
+      end
+
+    end #of describe "logged-in user" in new
+
 
   end # of get new
 
@@ -80,7 +94,7 @@ describe UsersController do
     describe "failure" do
       before(:each) do
         @attr = { :name => "", :email => "", :password => "", :password_confirmation => ""}
-    end
+      end
 
       it "should not create a user" do
         lambda do
@@ -127,6 +141,20 @@ describe UsersController do
       end
 
     end #of describe "success"
+
+    #exercise 10.6.3 - create ????
+    describe "logged-in user" do
+      before(:each) do
+        @user = Factory(:user)
+        test_sign_in(@user)
+      end
+
+      it "should redirect :create to root" do
+        post :create, :user => @atter
+        response.should redirect_to(root_path)
+      end
+
+    end #of describe "logged-in user" in new
 
   end #of describe POST 'create'
 
