@@ -329,7 +329,26 @@ describe UsersController do
                                            :content => "Next")
       end
 
-    end
+      it "should not show Delete links" do 
+        get :index
+        response.should_not have_selector("a", :href => "/users/2", :content => "delete")
+      end
+
+    end #for signed in users
+
+    describe "for signed-in admin users" do
+      before(:each) do
+        @user = test_sign_in(Factory(:user))
+        second = Factory(:user, :name => "Bob", :email => "another@example.com")
+        @user.toggle!(:admin)
+      end
+
+      it "should show Delete links" do 
+        get :index
+        response.should have_selector("a", :href => "/users/2",
+                                           :content => "delete")
+      end
+    end #for admin users
   end # of "GET 'index'"
 
   describe "DELETE 'destroy'" do
@@ -351,6 +370,7 @@ describe UsersController do
         delete :destroy, :id => @user
         response.should redirect_to(root_path)
       end
+
     end
 
     describe "as an admin user" do
@@ -370,6 +390,7 @@ describe UsersController do
         delete :destroy, :id => @user
         response.should redirect_to(users_path)
       end
+
     end
   end #of describe DELETE 'destroy'
 
