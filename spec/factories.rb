@@ -9,3 +9,11 @@ end
 Factory.sequence :email do |n|
   "person-#{n}@example.com"
 end
+
+Factory.define :entry do |entry|
+  entry.title "Title of my POVRay thing"
+  entry.shortcode "factorygirl shortcode"
+  entry.longcode "factorygirl looooongcode"
+  entry.comments "factorygirl commennntttsss"
+  entry.association :user # the important part
+end

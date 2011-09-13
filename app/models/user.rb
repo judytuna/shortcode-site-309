@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   #can be modified by outside users (such as users submitting requests with web browsers). 
   attr_accessible :name, :email, :password, :password_confirmation
 
-  has_many :entries
+  has_many :entries, :dependent => :destroy
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

@@ -154,10 +154,28 @@ describe User do
     
     before(:each) do
       @user = User.create(@attr)
+      @en1 = Factory(:entry, :user => @user, :created_at => 1.day.ago)
+      @en2 = Factory(:entry, :user => @user, :created_at => 1.hour.ago)
     end
-    
+  
     it "should have an entries attribute" do
       @user.should respond_to(:entries)
+    end
+    
+    it "should have the right entries in the right order" do
+      @user.entries.should == [@en2, @en1] # also checks it's an array
+    end
+    
+    it "should destroy associated entries" do
+      @user.destroy
+      [@en1, @en2].each do |entry|
+        Entry.find_by_id(entry.id).should be_nil
+        # or... since Entry.find raises an exception on failure,
+        # the following is equivalent:
+        # lambda do
+        #   Entry.find(entry.id)
+        # end.should raise_error(ActiveRecord::RecordNotFound)
+      end
     end
   end
 
