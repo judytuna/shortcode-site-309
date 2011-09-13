@@ -1,11 +1,13 @@
 require 'digest'
 
 class User < ActiveRecord::Base
-  attr_accessor :password
+  attr_accessor :password # need this, forget why though 
 
   #can be modified by outside users (such as users submitting requests with web browsers). 
   attr_accessible :name, :email, :password, :password_confirmation
 
+  has_many :entries
+  
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name, :presence => true, :length => { :maximum => 100 }

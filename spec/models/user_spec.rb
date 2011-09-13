@@ -149,6 +149,18 @@ describe User do
   end
 
 
+  # entry associations - listing 11.5
+  describe "entry associations" do
+    
+    before(:each) do
+      @user = User.create(@attr)
+    end
+    
+    it "should have an entries attribute" do
+      @user.should respond_to(:entries)
+    end
+  end
+
 
 end #of describe User
 
