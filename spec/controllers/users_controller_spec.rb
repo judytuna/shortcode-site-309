@@ -391,6 +391,11 @@ describe UsersController do
         response.should redirect_to(users_path)
       end
 
+      it "should not let the admin user destroy itself" # do
+   #     delete :destroy, :id => admin
+    #    flash[:success].should =~ /can't destroy yourself/
+     # end
+
     end
   end #of describe DELETE 'destroy'
 
