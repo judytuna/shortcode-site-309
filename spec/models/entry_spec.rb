@@ -30,4 +30,23 @@ describe Entry do
     end
   end
   
+  describe "validations" do
+    
+    it "should require a user id" do
+      Entry.new(@attr).should_not be_valid
+    end
+    
+    it "should require nonblank title" do
+      @user.entries.build(:title => "  ").should_not be_valid
+    end
+    
+    it "should require nonblank shortcode" do
+      @user.entries.build(:shortcode => "  ").should_not be_valid
+    end
+    
+    it "should reject long shortcode content" do
+      @user.entries.build(:shortcode => "a" * 257).should_not be_valid
+    end
+  end
+  
 end
