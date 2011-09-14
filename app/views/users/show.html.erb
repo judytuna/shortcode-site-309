@@ -5,6 +5,13 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      
+      <% unless @user.entries.empty? %>
+        <table class="entries" summary="User entries">
+          <%= render @entries %>
+        </table>
+        <%= will_paginate @entries %>
+      <% end %>
     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />

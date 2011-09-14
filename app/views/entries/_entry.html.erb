@@ -1,0 +1,11 @@
+<tr>
+  <td class="entry">
+    <span class="title"><%= entry.title %></span>
+    <span class="shortcode"><%= entry.shortcode %></span>
+    <span class="longcode"><%= entry.longcode %></span>
+    <span class="comments"><%= entry.comments %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(entry.created_at) %> ago.
+    </span>
+  </td>
+</tr>

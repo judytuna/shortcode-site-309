@@ -33,6 +33,18 @@ describe UsersController do
       get :show, :id => @user
       response.should have_selector("h1>img", :class => "gravatar") #gravatar in h1
     end
+    
+    it "should show the user's entries" do
+      en1 = Factory(:entry, :user => @user, :title => "some title",
+                    :shortcode => "some shortcode")
+      en2 = Factory(:entry, :user => @user, :title => "another title",
+                    :shortcode => "other shortcode")
+      get :show, :id => @user
+      response.should have_selector("span.title", :title => en1.title)
+      response.should have_selector("span.shortcode", :shortcode => en1.shortcode)
+      response.should have_selector("span.title", :title => en2.title)
+      response.should have_selector("span.shortcode", :shortcode => en2.shortcode)
+    end
 
   end #of "Get 'show'" do
 
