@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+  before_filter :authenticate, :only => [:create, :destroy]
   
   def new # page that allows for creation of a new entry!!!
     @entry = Entry.new if signed_in?

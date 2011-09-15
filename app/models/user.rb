@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
     (user && user.salt == cookie_salt) ? user : nil
   end
   
+  def feed
+    Entry.where("user_id = ?", id)
+  end
+  
 
   private
 
@@ -63,6 +67,7 @@ class User < ActiveRecord::Base
 
 end
 
+
 # == Schema Information
 #
 # Table name: users
@@ -74,6 +79,6 @@ end
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
-#  admin              :boolean
+#  admin              :boolean         default(FALSE)
 #
 

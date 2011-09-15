@@ -50,3 +50,18 @@ describe Entry do
   end
   
 end
+
+# == Schema Information
+#
+# Table name: entries
+#
+#  id         :integer         not null, primary key
+#  title      :string(255)
+#  user_id    :integer
+#  shortcode  :text
+#  longcode   :text
+#  comments   :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+

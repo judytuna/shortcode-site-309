@@ -11,3 +11,18 @@ class Entry < ActiveRecord::Base
   
   default_scope :order => 'entries.created_at DESC'
 end
+
+# == Schema Information
+#
+# Table name: entries
+#
+#  id         :integer         not null, primary key
+#  title      :string(255)
+#  user_id    :integer
+#  shortcode  :text
+#  longcode   :text
+#  comments   :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+

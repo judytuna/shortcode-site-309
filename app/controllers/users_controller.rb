@@ -60,11 +60,7 @@ class UsersController < ApplicationController
 
 
   private
-    
-    def authenticate
-      deny_access unless signed_in?
-    end
-
+  
     def correct_user
       @user = User.find(params[:id])  #this gets :id from the current url, right?
       redirect_to(root_path) unless current_user?(@user) #current_user? is in app/helpers/sessions_helper

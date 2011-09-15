@@ -177,10 +177,28 @@ describe User do
         # end.should raise_error(ActiveRecord::RecordNotFound)
       end
     end
+    
+    describe "entries feed for a single user" do
+      
+      it "should have a feed" do
+        @user.should respond_to(:feed)
+      end
+      
+      it "should include the user's entries" do
+        @user.feed.include?(@en1).should be_true
+        @user.feed.include?(@en2).should be_true
+      end
+      
+      it "should not include a different user's entries" do
+        en3 = Factory(:entry,
+                      :user => Factory(:user, :email => Factory.next(:email)))
+        @user.feed.include?(en3).should be_false
+      end
+    end
   end
 
-
 end #of describe User
+
 
 # == Schema Information
 #
@@ -193,6 +211,6 @@ end #of describe User
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
-#  admin              :boolean
+#  admin              :boolean         default(FALSE)
 #
 

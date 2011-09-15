@@ -205,3 +205,59 @@ ul.users {
   list-style: none;
 }
 
+/* entries (need to convert from microposts tho) */
+
+h1.entry {
+  margin-bottom: 0.3em;
+}
+
+table.entries {
+  margin-top: 1em;
+}
+
+table.entries tr {
+  height: 70px;
+}
+
+table.entries tr td.gravatar {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  width: 50px;
+}
+
+table.entries tr td.entry {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  padding-top: 10px;
+}
+
+table.entries tr td.entry span.timestamp {
+  display: block;
+  font-size: 85%;
+  color: #666;
+}
+
+div.user_info img {
+  padding-right: 0.1em;
+}
+
+div.user_info a {
+  text-decoration: none;
+}
+
+div.user_info span.user_name {
+  position: absolute;
+}
+
+div.user_info span.entries {
+  font-size: 80%;
+}
+
+form.new_entry {
+  margin-bottom: 2em;
+}
+
+form.new_entry textarea {
+  height: 4em;
+  margin-bottom: 0;
+}
