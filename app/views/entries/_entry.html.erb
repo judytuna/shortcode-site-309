@@ -1,9 +1,20 @@
 <tr>
   <td class="entry">
-    <span class="title"><%= entry.title %></span>
-    <span class="shortcode"><%= entry.shortcode %></span>
-    <span class="longcode"><%= entry.longcode %></span>
-    <span class="comments"><%= entry.comments %></span>
+    <h2><span class="title"><%= entry.title %></span><br/></h2>
+    
+    <label>Short Code</label>
+    <pre class="shortcode"><%= entry.shortcode %></pre>
+    
+    <% if entry.longcode? %>
+      <label>Long Code</label>
+      <pre class="longcode"><%= entry.longcode %></pre>
+    <% end %>
+    
+    <% if entry.comments? %>
+	  <label>Comments</label>
+	  <pre class="comments"><%= entry.comments %></pre>
+    <% end %>
+
     <span class="timestamp">
       Posted <%= time_ago_in_words(entry.created_at) %> ago.
     </span>

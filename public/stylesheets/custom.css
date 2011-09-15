@@ -29,6 +29,11 @@ section h1 {
   color: #EEEEEE;
 }
 
+section h2 {
+  font-size: 170%;
+  color: #EEEEEE;
+}
+
 
 /* Links */
 
@@ -213,10 +218,29 @@ h1.entry {
 
 table.entries {
   margin-top: 1em;
+  border-spacing: 1em;
+}
+
+table.entries pre {
+  white-space: pre-wrap; /* css-3 */
+  margin-top: 0em;
+  border: 1px solid #999;
+  background-color: #EEE;
+  color: #000;
 }
 
 table.entries tr {
+  background-color: #DDD;
   height: 70px;
+  color: #000;
+}
+
+table.entries label {
+  font-size: 75%;
+}
+
+table.entries h2 {
+  color: #000;
 }
 
 table.entries tr td.gravatar {
@@ -234,6 +258,7 @@ table.entries tr td.entry {
 table.entries tr td.entry span.timestamp {
   display: block;
   font-size: 85%;
+  margin-top: 1em;
   color: #666;
 }
 

@@ -1,21 +1,22 @@
 <table class="profile" summary="Profile information">
   <tr>
     <td class="main">
-      <h1>
+      <h2>
         <%= gravatar_for @user %>
         <%= @user.name %>
-      </h1>
+      </h2>
+      <hr/>
+      
+      <%= link_to "New Entry", newentry_path %>
       
       <% unless @user.entries.empty? %>
+        <br/>
+        <center><h1> Entries </h1></center>
         <table class="entries" summary="User entries">
           <%= render @entries %>
         </table>
         <%= will_paginate @entries %>
       <% end %>
-    </td>
-    <td class="sidebar round">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
     </td>
   </tr>
 </table>
