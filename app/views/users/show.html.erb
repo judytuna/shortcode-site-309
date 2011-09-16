@@ -1,17 +1,21 @@
 <table class="profile" summary="Profile information">
   <tr>
     <td class="main">
+      <h1>Home</h1>
       <h2>
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h2>
       <hr/>
       
-      <%= link_to "New Entry", newentry_path %>
-      
       <% unless @user.entries.empty? %>
         <br/>
         <center><h1> Entries </h1></center>
+        <nav class="round">
+          <ul>
+            <li><%= link_to "New Entry", newentry_path %></li>
+          </ul>
+        </nav>
         <table class="entries" summary="User entries">
           <%= render @entries %>
         </table>

@@ -1,3 +1,8 @@
 <h1>New Entry</h1>
 
-<%= render 'fields' %>
+<%= form_for(@entry) do |f| %>
+  <%= render 'fields', :f => f %>
+  <div class="actions">
+    <%= f.submit "Submit Entry" %>
+  </div>
+<% end %>

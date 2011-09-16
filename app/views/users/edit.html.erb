@@ -1,4 +1,4 @@
-<h1>Edit user</h1>
+<h1>Edit Profile</h1>
 
 <%= form_for(@user) do |f| %>
   <%= render 'fields', :f => f %> 
@@ -9,6 +9,6 @@
 
 <div>
   <%= gravatar_for @user %>
-  <a href="http://gravatar.com/emails" target="_blank">change</a>
+  Use <a href="http://gravatar.com/emails" target="_blank">Gravatar</a> to add / change your icon.
 </div>
 
