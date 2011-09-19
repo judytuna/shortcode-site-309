@@ -7,15 +7,17 @@
         <%= @user.name %>
       </h2>
       <hr/>
-      
-      <% unless @user.entries.empty? %>
-        <br/>
-        <center><h1> Entries </h1></center>
+
         <nav class="round">
           <ul>
             <li><%= link_to "New Entry", newentry_path %></li>
           </ul>
         </nav>
+      
+      <% unless @user.entries.empty? %>
+        <br/>
+        <center><h1> Entries </h1></center>
+
         <table class="entries" summary="User entries">
           <%= render @entries %>
         </table>
