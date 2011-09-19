@@ -1,9 +1,0 @@
-<h1>All Entries</h1>
-
-<%= will_paginate %>
-
-<ul class="entries">
-  <%= render @entries %>
-</ul>
-
-<%= will_paginate %>
