@@ -1,6 +1,16 @@
 class EntriesController < ApplicationController
   before_filter :authenticate, :only => [:create, :destroy]
+
+  def show
+    @entry = Entry.find(params[:id])
+    @title = @entry.title
+  end
   
+  def index
+    @title = "All entries"
+    @entries = Entry.paginate(:page => params[:page]) 
+  end
+
   def new # page that allows for creation of a new entry!!!
     @entry = Entry.new if signed_in?
     @title = "New entry"
@@ -36,4 +46,5 @@ class EntriesController < ApplicationController
     flash[:success] = "Entry deleted."
     redirect_to current_user
   end
+  
 end
