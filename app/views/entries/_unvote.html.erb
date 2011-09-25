@@ -1,0 +1,4 @@
+<%= form_for current_user.votes.find_by_entry_id(@entry),
+             :html => { :method => :delete } do |f| %>
+  <div class="actions"><%= f.submit "Remove vote" %></div>
+<% end %>

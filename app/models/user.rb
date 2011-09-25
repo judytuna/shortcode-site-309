@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
 
   has_many :entries, :dependent => :destroy
+  has_many :votes
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -43,6 +44,18 @@ class User < ActiveRecord::Base
   
   def feed
     Entry.where("user_id = ?", id)
+  end
+  
+  def votedfor?(entry)
+    votes.find_by_entry_id(entry)
+  end
+  
+  def vote!(entry)
+    votes.create!(:entry_id => entry.id)
+  end
+  
+  def unvote!(entry)
+    votes.find_by_entry_id(entry).destroy
   end
   
 

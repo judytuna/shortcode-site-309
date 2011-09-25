@@ -196,6 +196,17 @@ describe User do
       end
     end
   end
+  
+  describe "votes" do
+    before(:each) do
+      @user = User.create!(@attr)
+      @voted = Factory(:user)
+    end
+    
+    it "should have a votes method" do
+      @user.should respond_to(:votes)
+    end
+  end
 
 end #of describe User
 

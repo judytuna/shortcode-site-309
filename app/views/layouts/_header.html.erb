@@ -15,6 +15,11 @@
       <% if signed_in? %>
       <li><%= link_to "All Users", users_path %></li>
       <% end %>
+    
+      <% if signed_in? %>
+      <li><%= link_to "All Entries", entries_path %></li>
+      <% end %>
+    
       <% if signed_in? %>
         <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
       <% else %>
