@@ -11,9 +11,11 @@
     
     <br />
     <!-- testing Paperclip -->
-    <%= image_tag entry.picture.url %>
-    <%= image_tag entry.picture.url(:medium) %>
-    <%= image_tag entry.picture.url(:thumb) %>
+    <% unless entry.picture == nil %>
+      <%= image_tag entry.picture.url %>
+      <%= image_tag entry.picture.url(:medium) %>
+      <%= image_tag entry.picture.url(:thumb) %>
+    <% end %>
     
     <br/>
     
