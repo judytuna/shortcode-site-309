@@ -1,10 +1,29 @@
 <tr>
-  <td class="entry thumbnail">
+  <td class="">
     <h2><span class="title"><%= entry.title %></span></h2>
     
     <nav>
     <%= link_to "edit", edit_entry_path(entry) %>
     </nav>
-  
+    
+    <br/>
+    
+    <label>Short Code</label>
+    <pre class="shortcode"><%= entry.shortcode %></pre>
+    
+    <% if entry.longcode? %>
+      <label>Long Code</label>
+      <pre class="longcode"><%= entry.longcode %></pre>
+    <% end %>
+    
+    <% if entry.comments? %>
+	  <label>Comments</label>
+	  <pre class="comments"><%= entry.comments %></pre>
+    <% end %>
+
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(entry.created_at) %> ago.
+    </span>
+    
   </td>
 </tr>

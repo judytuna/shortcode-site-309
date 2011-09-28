@@ -1,12 +1,22 @@
 <tr>
   <td class="entry">
-    <h2><span class="title"><%= entry.title %></span></h2>
+    <h2><span class="title">
+      <%= link_to entry.title, entry_path(entry) %>
+    </span></h2>
     
     <nav>
-    <%= link_to "edit", edit_entry_path(entry) %>
+    <%= link_to "edit", edit_entry_path(entry) %> | 
+    <%= link_to "show", entry_path(entry) %>
     </nav>
     
+    <br />
+    <!-- testing Paperclip -->
+    <%= image_tag entry.picture.url %>
+    <%= image_tag entry.picture.url(:medium) %>
+    <%= image_tag entry.picture.url(:thumb) %>
+    
     <br/>
+    
     
     <label>Short Code</label>
     <pre class="shortcode"><%= entry.shortcode %></pre>

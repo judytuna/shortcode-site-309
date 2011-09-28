@@ -5,7 +5,7 @@ PovrayShortcode::Application.routes.draw do
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :votes
+
   resources :entries do
     member do
       get :voters

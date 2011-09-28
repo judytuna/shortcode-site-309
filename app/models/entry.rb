@@ -1,8 +1,9 @@
 class Entry < ActiveRecord::Base
-  attr_accessible :title, :shortcode, :longcode, :comments
+  attr_accessible :title, :shortcode, :longcode, :comments, :picture
   
   belongs_to :user
-  has_many :voters, :through => :votes, :source => :entry
+  has_many :votes
+  has_many :voters, :through => :votes, :source => :entry_id
   
   validates :title, :presence => true, :length => { :maximum => 140 }
   validates :user_id, :presence => true
@@ -11,6 +12,9 @@ class Entry < ActiveRecord::Base
   validates :comments, :length => { :maximum => 8192 }
   
   default_scope :order => 'entries.created_at DESC'
+  
+  has_attached_file :picture, :styles => { :medium => "300x300>",
+                                           :thumb => "100x100>" }
 end
 
 # == Schema Information

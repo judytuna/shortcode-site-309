@@ -58,6 +58,12 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def votes
+    #list all the entries that this user has voted for
+    @user = User.find(params[:id])
+    @entries = @user.votes.entries
+    @title = @user.name + "'s votes"
+  end
 
   private
   

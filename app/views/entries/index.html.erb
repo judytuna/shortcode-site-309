@@ -3,7 +3,7 @@
 <%= will_paginate %>
 
 <table class="entries">
-  <%= render @entries %>
+  <%= render :partial => "entry", :collection => @entries %>
 </table>
 
 <%= will_paginate %>
