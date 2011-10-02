@@ -15,6 +15,13 @@ class Entry < ActiveRecord::Base
   
   has_attached_file :picture, :styles => { :medium => "300x300>",
                                            :thumb => "100x100>" }
+  def image_name
+    'im' + String(user_id) + '_' + String(id)
+  end
+  
+  def povserver
+    "http://ec2-107-20-100-184.compute-1.amazonaws.com/"
+  end
 end
 
 # == Schema Information
