@@ -20,7 +20,7 @@
     <a href = "javascript: document.getElementById('render_<%= entry.image_name %>').submit()"> render </a>
     </nav>
     
-    <%= image_tag entry.povserver + "images/" + entry.image_name + '.png' %>
+    <%= image_tag entry.povserver + "images/" + entry.image_name + '.png', :width=>'100%' %>
     
     <br/>
     <!-- testing Paperclip -->
@@ -32,16 +32,20 @@
     <br/>
     
     <label>Short Code</label>
-    <pre class="shortcode"><%= entry.shortcode %></pre>
+    <div class="code"><%=h wrap entry.shortcode %></div>
+    <br/>
     
     <% if entry.longcode? %>
       <label>Long Code</label>
-      <pre class="longcode"><%= entry.longcode %></pre>
+      <div class="code"><%=h wrap entry.longcode %></div>
+      <br/>
     <% end %>
+    
     
     <% if entry.comments? %>
 	  <label>Comments</label>
-	  <pre class="comments"><%= entry.comments %></pre>
+	  <div class="code"><%=h wrap entry.comments %></div>
+	  <br/>
     <% end %>
 
     <span class="timestamp">

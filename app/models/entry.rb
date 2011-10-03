@@ -38,3 +38,31 @@ end
 #  updated_at :datetime
 #
 
+
+# searches for substrings of s with no space or tab of length at least l
+# and artificially inserts newlines to break them up.
+def wrap(s)
+  r = ""
+  i = 0
+  n = s.length
+  sofar = 0
+  while i < n
+    s[i]
+    i+=1
+    r << String(s[i])
+    
+    if /\s/ =~ s[i]
+      sofar = 0
+    else
+      sofar += 1
+    end
+    
+    if sofar >= 100
+      r << "\n"
+      sofar = 0
+    end
+  end
+  return r
+end
+
+
