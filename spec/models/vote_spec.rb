@@ -15,3 +15,15 @@ describe Vote do
   
   pending "should have weights and stuff"
 end
+
+# == Schema Information
+#
+# Table name: votes
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  entry_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+

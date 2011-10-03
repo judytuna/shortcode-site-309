@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :entries, :dependent => :destroy
   has_many :votes
+  has_many :voting_for, :through => :votes, :source => :entry
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -46,7 +47,7 @@ class User < ActiveRecord::Base
     Entry.where("user_id = ?", id)
   end
   
-  def votedfor?(entry)
+  def voting_for?(entry)
     votes.find_by_entry_id(entry)
   end
   
