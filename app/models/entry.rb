@@ -3,7 +3,11 @@ class Entry < ActiveRecord::Base
   
   belongs_to :user
   has_many :votes
-  has_many :voters, :through => :votes, :source => :entry_id
+  # has_many :voters, :through => :votes, :source => :entry_id
+  
+  has_many :reverse_relationships, :foreign_key => "entry_id",
+                                   :class_name => "Vote"
+  has_many :voters, :through => :reverse_relationships, :source => :user
   
   validates :title, :presence => true, :length => { :maximum => 140 }
   validates :user_id, :presence => true
