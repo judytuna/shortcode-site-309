@@ -1,3 +1,5 @@
+require 'digest'
+
 class Entry < ActiveRecord::Base
   attr_accessible :title, :shortcode, :longcode, :comments, :picture
   
@@ -22,6 +24,10 @@ class Entry < ActiveRecord::Base
   def povserver
     "http://ec2-107-20-100-184.compute-1.amazonaws.com/"
   end
+  
+  def key
+    Digest::SHA2.hexdigest(image_name + String('#bananas23'))
+  end
 end
 
 # == Schema Information
@@ -37,7 +43,6 @@ end
 #  created_at :datetime
 #  updated_at :datetime
 #
-
 
 # searches for substrings of s with no space or tab of length at least l
 # and artificially inserts newlines to break them up.
@@ -64,5 +69,3 @@ def wrap(s)
   end
   return r
 end
-
-
