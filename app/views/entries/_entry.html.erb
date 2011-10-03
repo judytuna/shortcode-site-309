@@ -4,7 +4,7 @@
       <%= link_to entry.title, entry_path(entry) %>
     </span></h2>
     
-    <form id="render_<%= entry.image_name %>"
+    <form target="_blank" id="render_<%= entry.image_name %>"
     	name="render_job_form"
     	action="<%= entry.povserver + 'cgi-bin/request.py' %>"
     	method="post">
