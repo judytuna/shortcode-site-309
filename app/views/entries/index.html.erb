@@ -10,7 +10,7 @@
   <% if i%cols==0 %> <tr> <% end %>
     <td>
     <a href = <%= url %> >
-    <img width = "192px" height = "108px" src = "http://upload.wikimedia.org/wikipedia/commons/0/0e/Human_Thumbnail.JPG"><br/>
+    <img src = "<%= entry.povserver + 'thumbnails/' + entry.image_name %>"><br/>
     <center><%= entry.title %></center>
     </td>
   <% if i%cols==cols-1 %> </tr> <% end %>
