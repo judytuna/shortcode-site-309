@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_filter :authenticate, :only => [:create, :destroy]
+  # before_filter :admin_user, :only => :voters
 
   def show
     @entry = Entry.find(params[:id])
@@ -45,6 +46,12 @@ class EntriesController < ApplicationController
     Entry.find(params[:id]).destroy
     flash[:success] = "Entry deleted."
     redirect_to current_user
+  end
+  
+  def voters
+    @title = "Users voting for this entry"
+    @entry = Entry.find(params[:id])
+    @users = @entry.voters
   end
   
 end

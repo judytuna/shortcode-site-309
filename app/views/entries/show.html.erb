@@ -1,4 +1,4 @@
 <table class="entries">
   <%= render @entry %>
-  <%= render "vote_form" %>
+  <%= render "vote_form" if signed_in? %>
 </table>

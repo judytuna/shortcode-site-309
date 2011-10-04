@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
+  before_filter :authenticate, :except => [:show, :new, :create]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, :only => :destroy
   before_filter :logged_in_user, :only => [:new, :create]
@@ -58,11 +58,11 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  def votes
+  def voting_for
     #list all the entries that this user has voted for
     @user = User.find(params[:id])
-    @entries = @user.votes.entries
     @title = @user.name + "'s votes"
+    @entries = @user.voting_for.entries
   end
 
   private
