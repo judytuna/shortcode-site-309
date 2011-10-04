@@ -1,5 +1,5 @@
 <% unless current_user?(@user) %>
-  <div id="follow_form">
+  <div id="vote_form">
   <% if current_user.votedfor?(@entry) %>
     <%= render 'unvote' %>
   <% else %>

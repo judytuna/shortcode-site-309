@@ -3,9 +3,13 @@
   <nav class="round">
     <ul>
       <% if signed_in? %>
-      <li><%= link_to "My Home", current_user %></li>
+      <li><%= link_to "My Entries", current_user %></li>
       <% else %>
       <li><%= link_to "Home", root_path %></li>
+      <% end %>
+    
+      <% if signed_in? %>
+      <li><%= link_to "All Entries", entries_path %></li>
       <% end %>
       
       <% if signed_in? %>
@@ -14,10 +18,6 @@
       
       <% if signed_in? %>
       <li><%= link_to "All Users", users_path %></li>
-      <% end %>
-    
-      <% if signed_in? %>
-      <li><%= link_to "All Entries", entries_path %></li>
       <% end %>
     
       <% if signed_in? %>
