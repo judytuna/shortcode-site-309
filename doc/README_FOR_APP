@@ -1,2 +1,14 @@
 Use this README file to introduce your application and point to useful places in the API for learning more.
 Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+
+Some reminders:
+
+To migrate the data base:
+bin/rake db:migrate
+
+To run the server:
+rails server
+
+Address for povserver ec2 machine as of 10/3/2011
+http://ec2-107-20-100-184.compute-1.amazonaws.com
+

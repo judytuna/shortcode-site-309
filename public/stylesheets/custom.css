@@ -1,5 +1,5 @@
 .container {
-  width: 710px;
+  width: 900px;
 }
 
 body {
@@ -21,6 +21,7 @@ section {
   margin-top: 1em;
   font-size: 120%;
   padding: 20px;
+  width: 100%;
   background: #555555;
 }
 
@@ -220,8 +221,9 @@ table.entries {
   border-spacing: 1em;
 }
 
-table.entries pre {
-  white-space: pre-wrap; /* css-3 */
+table.entries div {
+  white-space: pre-wrap;
+  
   margin-top: 0em;
   border: 1px solid #999;
   background-color: #EEE;
