@@ -161,9 +161,8 @@ div.field, div.actions {
 
 /* error (on the signup page) stuff */
 .field_with_errors {
-  margin-top: 10px;
-  padding: 2px;
-  background-color: red;
+  padding: 1px;
+  background-color: #b55;
   display: table;
 }
 
@@ -177,6 +176,7 @@ div.field, div.actions {
   padding: 7px;
   padding-bottom: 12px;
   margin-bottom: 20px;
+  color: #000;
   background-color: #f0f0f0;
 }
 
@@ -186,7 +186,7 @@ div.field, div.actions {
   padding: 5px 5px 5px 15px;
   font-size: 12px;
   margin: -7px;
-  background-color: #900;
+  background-color: #b44;
   color: #fff;
 }
 
