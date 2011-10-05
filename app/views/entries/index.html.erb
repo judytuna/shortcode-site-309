@@ -8,10 +8,15 @@
   <% @entries.each do |entry| %>
   <% url = 'entries/'+String(entry.id) %>
   <% if i%cols==0 %> <tr> <% end %>
-    <td>
+    <td style="background-color: f00;">
     <a href = <%= url %> >
-    <img src = "<%= entry.povserver + 'thumbnails/' + entry.image_name %>"><br/>
-    <center><%= entry.title %></center>
+    <center>
+    <img src = "<%= entry.povserver + 'thumbnails/' + entry.image_name %>"
+    	onerror="this.src='images/default_thumb.png';">
+    <br/>
+    <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
+    </a>
+    </center>
     </td>
   <% if i%cols==cols-1 %> </tr> <% end %>
   <% i+=1 %>

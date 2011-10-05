@@ -60,8 +60,6 @@ def wrap(s)
   n = s.length
   sofar = 0
   while i < n
-    s[i]
-    i+=1
     r << String(s[i])
     
     if /\s/ =~ s[i]
@@ -74,6 +72,7 @@ def wrap(s)
       r << "\n"
       sofar = 0
     end
+    i+=1
   end
   return r
 end

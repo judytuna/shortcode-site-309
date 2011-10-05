@@ -1,7 +1,7 @@
 <table class="profile" summary="Profile information">
   <tr>
     <td class="main">
-      <h1>Home</h1>
+      <h1>My Entries</h1>
       <h2>
         <%= gravatar_for @user %>
         <%= @user.name %>
@@ -14,7 +14,7 @@
       
       <hr/>
 
-        <nav class="round">
+        <nav>
           <ul>
             <li><%= link_to "New Entry", newentry_path %></li>
           </ul>
@@ -22,7 +22,6 @@
       
       <% unless @user.entries.empty? %>
         <br/>
-        <center><h1> Entries </h1></center>
 
         <table class="entries" summary="User entries">
           <%= render @entries %>
