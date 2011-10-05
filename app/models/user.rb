@@ -47,11 +47,11 @@ class User < ActiveRecord::Base
     Entry.where("user_id = ?", id)
   end
   
-  def voting_for?(entry)
+  def votedfor?(entry)
     votes.find_by_entry_id(entry)
   end
   
-  def vote!(entry)
+  def cast_vote!(entry)
     votes.create!(:entry_id => entry.id)
   end
   

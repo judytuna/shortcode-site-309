@@ -2,8 +2,9 @@ class VotesController < ApplicationController
   before_filter :authenticate
   
   def create
+    puts params
     @entry = Entry.find(params[:vote][:entry_id])
-    current_user.vote!(@entry)
+    current_user.cast_vote!(@entry)
     respond_to do |format|
       format.html {redirect_to @entry}
       format.js
