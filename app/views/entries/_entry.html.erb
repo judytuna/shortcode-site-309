@@ -25,12 +25,7 @@
     <%= image_tag entry.povserver + "images/" + entry.image_name + '.png', :width=>'100%' %>
     
     <br/>
-    <!-- testing Paperclip -->
-    <% unless entry.picture == nil %>
-      <%= image_tag entry.picture.url %>
-      <%= image_tag entry.picture.url(:medium) %>
-      <%= image_tag entry.picture.url(:thumb) %>
-    <% end %>
+
     <br/>
     
     <label>Short Code</label>

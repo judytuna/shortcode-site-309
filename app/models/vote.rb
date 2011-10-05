@@ -7,3 +7,15 @@ class Vote < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :entry_id, :presence => true
 end
+
+# == Schema Information
+#
+# Table name: votes
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  entry_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+

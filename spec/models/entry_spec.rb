@@ -51,17 +51,22 @@ describe Entry do
   
 end
 
+
 # == Schema Information
 #
 # Table name: entries
 #
-#  id         :integer         not null, primary key
-#  title      :string(255)
-#  user_id    :integer
-#  shortcode  :text
-#  longcode   :text
-#  comments   :text
-#  created_at :datetime
-#  updated_at :datetime
+#  id                   :integer         not null, primary key
+#  title                :string(255)
+#  user_id              :integer
+#  shortcode            :text
+#  longcode             :text
+#  comments             :text
+#  created_at           :datetime
+#  updated_at           :datetime
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
 #
 

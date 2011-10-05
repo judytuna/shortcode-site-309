@@ -5,7 +5,11 @@ class Entry < ActiveRecord::Base
   
   belongs_to :user
   has_many :votes
-  has_many :voters, :through => :votes, :source => :entry_id
+  # has_many :voters, :through => :votes, :source => :entry_id
+  
+  has_many :reverse_relationships, :foreign_key => "entry_id",
+                                   :class_name => "Vote"
+  has_many :voters, :through => :reverse_relationships, :source => :user
   
   validates :title, :presence => true, :length => { :maximum => 140 }
   validates :user_id, :presence => true
@@ -15,8 +19,7 @@ class Entry < ActiveRecord::Base
   
   default_scope :order => 'entries.created_at DESC'
   
-  has_attached_file :picture, :styles => { :medium => "300x300>",
-                                           :thumb => "100x100>" }
+  # has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   def image_name
     'im' + String(user_id) + '_' + String(id)
   end
@@ -30,18 +33,23 @@ class Entry < ActiveRecord::Base
   end
 end
 
+
 # == Schema Information
 #
 # Table name: entries
 #
-#  id         :integer         not null, primary key
-#  title      :string(255)
-#  user_id    :integer
-#  shortcode  :text
-#  longcode   :text
-#  comments   :text
-#  created_at :datetime
-#  updated_at :datetime
+#  id                   :integer         not null, primary key
+#  title                :string(255)
+#  user_id              :integer
+#  shortcode            :text
+#  longcode             :text
+#  comments             :text
+#  created_at           :datetime
+#  updated_at           :datetime
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
 #
 
 # searches for substrings of s with no space or tab of length at least l

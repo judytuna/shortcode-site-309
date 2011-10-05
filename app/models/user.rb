@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :entries, :dependent => :destroy
   has_many :votes
+  has_many :voting_for, :through => :votes, :source => :entry
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -50,7 +51,7 @@ class User < ActiveRecord::Base
     votes.find_by_entry_id(entry)
   end
   
-  def vote!(entry)
+  def cast_vote!(entry)
     votes.create!(:entry_id => entry.id)
   end
   

@@ -1,9 +1,0 @@
-<% unless current_user?(@user) %>
-  <div id="vote_form">
-  <% if current_user.votedfor?(@entry) %>
-    <%= render 'unvote' %>
-  <% else %>
-    <%= render 'vote' %>
-  <% end %>
-  </div>
-<% end %>
