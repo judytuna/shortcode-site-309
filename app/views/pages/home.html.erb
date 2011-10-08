@@ -1,9 +1,10 @@
-<h1>Sample App: a POVRay shortcode contest website</h1>
+<center><h1>Welcome to the (new) POVRay Shortcode Contest</h1></center>
 <p>
-  This is the home page for the
-  <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-  sample application. In this case, I'm modifying the tutorial
-  to make a website for a POVRay shortcode contest!
+  <a href = "http://povray.org">POVRay</a> is a completely free, open source software application for creating stunning 3D grpahics.
+  Scenes and models in POVRay are described using the POVRay scripting language.
+  This language is not unlike most any programming language:
+  there are variables, loops and functions as well constructs for defining the elements of a 3D scene.
+  Also, like any programming language, there is a short-code contest which challenges you to create the best graphics you can within a you to constrained framework of a short povray script for fun and glory.
 </p>
 
 <% if signed_in? %>
@@ -12,3 +13,7 @@
         <p><%= link_to "Sign up now!", signup_path, :class => "signup_button round" %></p>
 <% end %>
 
+<p>
+  This site was made using Ruby on Rails, with help from 
+  <a href="http://railstutorial.org/">this tutorial</a>
+</p>
