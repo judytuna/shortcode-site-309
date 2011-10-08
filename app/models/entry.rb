@@ -24,8 +24,12 @@ class Entry < ActiveRecord::Base
     'im' + String(user_id) + '_' + String(id)
   end
   
-  def povserver
+  def pov_server
     "http://ec2-107-20-100-184.compute-1.amazonaws.com/"
+  end
+  
+  def image_url
+  	pov_server + "images/" + image_name + '.png'
   end
   
   def key

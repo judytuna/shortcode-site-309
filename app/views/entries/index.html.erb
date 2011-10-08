@@ -7,11 +7,20 @@
   <% i = 0 %>
   <% @entries.each do |entry| %>
   <% url = 'entries/'+String(entry.id) %>
+  
+  
   <% if i%cols==0 %> <tr> <% end %>
     <td style="background-color: f00;">
-    <a href = <%= url %> >
     <center>
-    <img src = "<%= entry.povserver + 'thumbnails/' + entry.image_name %>"
+    <% vote = current_user.votes.find_by_entry_id(entry.id) %>
+    <% if vote %>
+      <%= pluralize(vote.weight, 'point') %><br/>
+    <% else %>
+      <br/>
+    <% end %>
+   	
+    <a href = <%= url %> >
+    <img src = "<%= entry.pov_server + 'thumbnails/' + entry.image_name %>"
     	onerror="this.src='images/default_thumb.png';">
     <br/>
     <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
@@ -24,3 +33,4 @@
 </table>
 
 <%= will_paginate %>
+

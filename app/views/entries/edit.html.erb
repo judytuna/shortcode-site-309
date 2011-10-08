@@ -1,11 +1,15 @@
 <h1>Edit Entry</h1>
 
 <%= form_for(@entry) do |f| %>
-  <nav>
-    <%= link_to "delete", @entry, :method => :delete, :confirm => "Deleting Entry.  Are you sure?",
-         :title => "Delete #{@entry.title}" %>
-  </nav>
+
   <%= render 'fields', :f => f %>
+  
+  <nav>
+    <%= link_to "delete", @entry,
+    	:method => :delete,
+    	:confirm => "Deleting Entry.  Are you sure?",
+        :title => "Delete #{@entry.title}" %>
+  </nav>
   
   <div class="actions">
     <%= f.submit "Update Entry" %>

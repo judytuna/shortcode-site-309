@@ -51,8 +51,9 @@ class User < ActiveRecord::Base
     votes.find_by_entry_id(entry)
   end
   
-  def cast_vote!(entry)
-    votes.create!(:entry_id => entry.id)
+  def cast_vote!(entry, weight)
+  	puts "****weight = " + weight.to_s
+    votes.create!(:entry_id => entry.id, :weight => weight)
   end
   
   def unvote!(entry)
