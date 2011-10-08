@@ -1,5 +1,5 @@
 class Vote < ActiveRecord::Base
-  attr_accessible :entry_id
+  attr_accessible :entry_id, :weight
   
   belongs_to :user, :class_name => "User"
   belongs_to :entry, :class_name => "Entry"
@@ -7,6 +7,7 @@ class Vote < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :entry_id, :presence => true
 end
+
 
 # == Schema Information
 #
@@ -17,5 +18,6 @@ end
 #  entry_id   :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  weight     :integer
 #
 

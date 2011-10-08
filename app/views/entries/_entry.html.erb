@@ -6,7 +6,7 @@
     
     <form target="_blank" id="render_<%= entry.image_name %>"
     	name="render_job_form"
-    	action="<%= entry.povserver + 'cgi-bin/request.py' %>"
+    	action="<%= entry.pov_server + 'cgi-bin/request.py' %>"
     	method="post">
     	<input type="hidden" name="code"
     		value='<%= entry.shortcode %>' />
@@ -22,14 +22,16 @@
     <a href = "javascript: document.getElementById('render_<%= entry.image_name %>').submit()"> render </a>
     </nav>
     
-    <%= image_tag entry.povserver + "images/" + entry.image_name + '.png', :width=>'100%' %>
+    <a href = <%= entry.image_url %> >
+    <%= image_tag entry.image_url, :width=>'100%' %>
+    </a>
     
     <br/>
-
     <br/>
     
     <label>Short Code</label>
-    <div class="code"><%=h wrap entry.shortcode %></div>
+    <div class="code"><%=h wrap entry.shortcode %>
+    </div>
     <br/>
     
     <% if entry.longcode? %>
