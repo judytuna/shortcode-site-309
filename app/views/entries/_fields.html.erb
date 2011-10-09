@@ -1,12 +1,18 @@
 <%= render 'shared/error_messages', :object => f.object %>
+
 <div class="field">
   <%= f.label :"title" %><br />
   <%= f.text_field :title %>
 </div>
+
 <div class="field">
   <%= f.label :"shortcode" %><br />
-  <%= f.text_area :shortcode %>
+  <%= f.text_area :shortcode,
+    :id => "shortcode_textarea",
+  	:onKeyUp => "updateTextCounters();" %><br/>
+  <span id = "shortcode_count" value=""></span> characters left
 </div>
+
 <div class="field">
   <%= f.label :"longcode" %><br />
   <%= f.text_area :longcode %>
@@ -19,3 +25,26 @@
   <%= f.label :"picture" %><br />
   <%= f.file_field :picture %>
 </div>
+
+<script language="JavaScript">
+
+function textCounter(field, countfield, enforce, limit)
+{
+	if (enforce && field.value.length > limit)
+		field.value = field.value.substring(0, limit);
+	
+	countfield.innerHTML = limit - field.value.length;
+}
+
+function udpateTextCounters()
+{
+	textCounter(
+		document.getElementById("shortcode_textarea"),
+  		document.getElementById("shortcode_count"), false, 256);
+}
+
+setInterval(udpateTextCounters, 100);
+
+</script>
+
+
