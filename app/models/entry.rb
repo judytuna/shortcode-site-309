@@ -35,6 +35,14 @@ class Entry < ActiveRecord::Base
   def key
     Digest::SHA2.hexdigest(image_name + String('#bananas23'))
   end
+  
+  def score
+  	r = 0
+  	votes.each do |v|
+  		r += v.weight
+  	end
+  	return r
+  end
 end
 
 
