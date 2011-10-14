@@ -9,7 +9,12 @@ class EntriesController < ApplicationController
   
   def index
     @title = "All entries"
-    @entries = Entry.paginate(:page => params[:page]) 
+    @entries = Entry.paginate(:page => params[:page])
+  end
+  
+  def results
+    @title = "Results"
+    @entries = Entry.paginate(:page => params[:page])
   end
 
   def new # page that allows for creation of a new entry!!!
@@ -55,3 +60,4 @@ class EntriesController < ApplicationController
   end
   
 end
+
