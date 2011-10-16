@@ -6,13 +6,7 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h2>
-      <a href="<%= voting_for_user_path(@user) %>">
-        <span id="voting" class="stat">
-          Voting for: <%= @user.voting_for.count %> of 5
-        </span>
-      </a>
-      
-      <hr/>
+      <%= render 'entries/vote_info'%>
 
         <nav>
           <ul>

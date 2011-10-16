@@ -1,6 +1,46 @@
 <div id = "vote_info">
+
+<div class = "round" style = "padding: 10px; background-color:#444;">
+
+<% if current_user.votes  %>
+<h2>Your votes</h2>
+
+<!--Work-around for a bug where a phantom vote object
+    with no id or weight appears in the list--!>
+<% revised_vote_list = [] %>
+<% current_user.votes.each do |vote| %>
+<%   if vote.id %>
+<%     revised_vote_list << vote %>
+<%   end %>
+<% end %>
+
+
+<table>
+
+<tr>
+<td>Points </td>
+<td>Title</td>
+</tr>
+
+<% revised_vote_list.sort_by! {|vote| -vote.weight} %>
+
+<% revised_vote_list.each do |vote| %>
+<%if vote.id %>
+<tr>
+<td><%= h vote.weight%></td>
+<td><%= h Entry.find_by_id(vote.entry_id).title %> </td>
+</tr>
+<% end %>
+<% end %>
+</table>
+
 <% vote = current_user.votes.find_by_entry_id(@entry) %>
 <% if vote %>
+<hr/>
 <%= "You have voted for this entry for " + pluralize(vote.weight, 'point') + '.' %>
 <% end %>
+<% end %>
+
+</div>
+
 </div>

@@ -1,4 +1,5 @@
-<h1>All Entries</h1>
+
+<h1 style="margin-top: 10px;" >All Entries</h1>
 
 <%= will_paginate %>
 
@@ -9,9 +10,18 @@
   <% url = 'entries/'+String(entry.id) %>
   
   <% if i%cols==0 %> <tr> <% end %>
-    <td style="background-color: f00;">
-    <center>
+    <td>
+    
     <% vote = current_user.votes.find_by_entry_id(entry.id) %>
+    
+    <% if vote %>
+      <div style="padding:1px; outline-style: solid;">
+    <% else %>
+      <div>
+    <% end %>
+    
+    <center>
+    
     <% if vote %>
       <%= pluralize(vote.weight, 'point') %><br/>
     <% else %>
@@ -25,6 +35,7 @@
     <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
     </a>
     </center>
+    </div>
     </td>
   <% if i%cols==cols-1 %> </tr> <% end %>
   <% i+=1 %>
@@ -33,3 +44,4 @@
 
 <%= will_paginate %>
 
+<%= render 'vote_info' %>
