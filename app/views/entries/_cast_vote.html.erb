@@ -1,4 +1,3 @@
-<%= render 'vote_info' %>
 <%= form_for current_user.votes.build(:entry_id => @entry.id),
 		:remote => true do |f| %>
   <%= f.hidden_field :entry_id %>
