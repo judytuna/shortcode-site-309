@@ -5,7 +5,7 @@ class Entry < ActiveRecord::Base
   
   belongs_to :user
   has_many :votes
-  # has_many :voters, :through => :votes, :source => :entry_id
+  belongs_to :contest
   
   has_many :reverse_relationships, :foreign_key => "entry_id",
                                    :class_name => "Vote"
