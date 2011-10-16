@@ -1,18 +1,21 @@
 <header>
 
   <div>
-  <div style="display: inline-block; vertical-align: top;">
-    <%= link_to logo, root_path %>
-  </div>
-  <div class="round" style="padding: 10px;display: inline-block; float: right; background-color: #444;">
+    <div style="display: inline-block; vertical-align: top;">
+     <%= link_to logo, root_path %>
+    </div>
+    <div class="round" style="padding: 10px;
+         display: inline-block; float: right; background-color: #444;">
 
       
       <div style="font-size: 1.3em;">
-	    <%= gravatar_for current_user, :size => 30 %>
-		<div style="display: inline-block; vertical-align: top;">
-			<%= current_user.name %>
-		</div>
-	  </div>
+        <% if signed_in? %>
+          <%= gravatar_for current_user, :size => 30 %>
+	    <div style="display: inline-block; vertical-align: top;">
+	      <%= current_user.name %>
+	    </div>
+        <% end %>
+      </div>
       
 
       <nav class="round">
@@ -41,7 +44,7 @@
 			<li><%= link_to "Sign in", signin_path %></li>
 		  <% end %>
 		</ul>
-	  </nav>
+      </nav>
       
     </div>
   </div>
