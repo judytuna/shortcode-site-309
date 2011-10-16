@@ -1,9 +1,11 @@
 <header>
+
   <div>
   <div style="display: inline-block; vertical-align: top;">
     <%= link_to logo, root_path %>
   </div>
   <div class="round" style="padding: 10px;display: inline-block; float: right; background-color: #444;">
+
       
       <div style="font-size: 1.3em;">
 	    <%= gravatar_for current_user, :size => 30 %>
@@ -12,6 +14,7 @@
 		</div>
 	  </div>
       
+
       <nav class="round">
 		<ul>
 		  <% if signed_in? %>
@@ -42,5 +45,6 @@
       
     </div>
   </div>
+
 </header>
 

@@ -43,10 +43,6 @@ class User < ActiveRecord::Base
     (user && user.salt == cookie_salt) ? user : nil
   end
   
-  def feed
-    Entry.where("user_id = ?", id)
-  end
-  
   def votedfor?(entry)
     votes.find_by_entry_id(entry)
   end

@@ -1,4 +1,11 @@
-<center><h1>Welcome to the (new) POVRay Shortcode Contest</h1></center>
+<center>
+  <% if signed_in? %>
+    <h1>Welcome, <%= current_user.name %>!</h1>
+  <% else %>
+    <h1>Welcome to the (new) POVRay Shortcode Contest</h1>
+  <% end %>
+</center>
+
 <p>
   <a href = "http://povray.org">POVRay</a> is a completely free, open source software application for creating stunning 3D grpahics.
   Scenes and models in POVRay are described using the POVRay scripting language.
