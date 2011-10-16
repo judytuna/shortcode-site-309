@@ -11,10 +11,15 @@ header {
   padding-top: 20px;
 }
 
-header img {
+header img.logo {
   padding: 1px;
   width: 250px;
   background: #777777;
+}
+
+header img.gravitar {
+  padding: 1px;
+  width: 40px;
 }
 
 section {

@@ -1,9 +1,7 @@
 <%= form_for current_user.votes.find_by_entry_id(@entry),
              :html => { :method => :delete },
              :remote => true do |f| %>
-  <% vote = current_user.votes.find_by_entry_id(@entry) %>
-  <%= "You have voted for this entry for " + pluralize(vote.weight, 'point') + '.' %>
   <div class="actions">
-  	<%= f.submit "Remove vote" %>
+    <%= f.submit "Remove vote" %>
   </div>
 <% end %>
