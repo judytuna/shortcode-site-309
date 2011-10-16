@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def logo
-    image_tag("logo.png", :alt => "POVRay Shortcode Contest", :class => "round")
+    image_tag("logo.png", :alt => "POVRay Shortcode Contest", :class => "round logo")
   end
 
   #return a title on a per-page basis

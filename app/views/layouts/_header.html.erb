@@ -1,31 +1,46 @@
 <header>
-  <%= link_to logo, root_path %>
-  <nav class="round">
-    <ul>
-      <% if signed_in? %>
-      <li><%= link_to "My Entries", current_user %></li>
-      <% else %>
-      <li><%= link_to "Home", root_path %></li>
-      <% end %>
-    
-      <% if signed_in? %>
-      <li><%= link_to "All Entries", entries_path %></li>
-      <% end %>
+  <div>
+  <div style="display: inline-block; vertical-align: top;">
+    <%= link_to logo, root_path %>
+  </div>
+  <div class="round" style="padding: 10px;display: inline-block; float: right; background-color: #444;">
       
-      <% if signed_in? %>
-      <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
-      <% end %>
+      <div style="font-size: 1.3em;">
+	    <%= gravatar_for current_user, :size => 30 %>
+		<div style="display: inline-block; vertical-align: top;">
+			<%= current_user.name %>
+		</div>
+	  </div>
       
-      <% if signed_in? %>
-      <li><%= link_to "All Users", users_path %></li>
-      <% end %>
-    
-      <% if signed_in? %>
-        <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
-      <% else %>
-        <li><%= link_to "Sign in", signin_path %></li>
-      <% end %>
-    </ul>
-  </nav>
+      <nav class="round">
+		<ul>
+		  <% if signed_in? %>
+		  <li><%= link_to "My Entries", current_user %></li>
+		  <% else %>
+		  <li><%= link_to "Home", root_path %></li>
+		  <% end %>
+		
+		  <% if signed_in? %>
+		  <li><%= link_to "All Entries", entries_path %></li>
+		  <% end %>
+		  
+		  <% if signed_in? %>
+		  <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+		  <% end %>
+		  
+		  <% if signed_in? %>
+		  <li><%= link_to "All Users", users_path %></li>
+		  <% end %>
+		
+		  <% if signed_in? %>
+			<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+		  <% else %>
+			<li><%= link_to "Sign in", signin_path %></li>
+		  <% end %>
+		</ul>
+	  </nav>
+      
+    </div>
+  </div>
 </header>
 
