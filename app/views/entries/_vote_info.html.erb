@@ -1,0 +1,6 @@
+<div id = "vote_info">
+<% vote = current_user.votes.find_by_entry_id(@entry) %>
+<% if vote %>
+<%= "You have voted for this entry for " + pluralize(vote.weight, 'point') + '.' %>
+<% end %>
+</div>
