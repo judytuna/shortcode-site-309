@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
     puts "votes.size = " + votes.size.to_s + " user_id = " + id.to_s
   end
   
-
+  
   private
 
     def encrypt_password

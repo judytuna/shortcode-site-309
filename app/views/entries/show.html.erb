@@ -1,5 +1,9 @@
 <%= render 'vote_info' %>
-<%= render "cast_vote_form" if signed_in? %>
+
+<% if signed_in? && current_user.id != @entry.user_id %>
+<%=  render "cast_vote_form" %>
+<% end %>
+
 <table class="entries">
   <%= render @entry %>
 </table>
