@@ -3,9 +3,9 @@
   <nav class="round">
     <ul>
       <% if signed_in? %>
-      <li><%= link_to "My Entries", current_user %></li>
+        <li>Signed in as:<%= link_to current_user.name, current_user %></li>
       <% else %>
-      <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Home", root_path %></li>
       <% end %>
     
       <% if signed_in? %>
@@ -27,5 +27,6 @@
       <% end %>
     </ul>
   </nav>
+
 </header>
 
