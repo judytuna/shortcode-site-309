@@ -12,9 +12,11 @@
   <% if i%cols==0 %> <tr> <% end %>
     <td>
     
-    <% vote = current_user.votes.find_by_entry_id(entry.id) %>
+    <% if signed_in? %>
+      <% vote = current_user.votes.find_by_entry_id(entry.id) %>
+    <% end %>
     
-    <% if vote %>
+    <% if vote && signed_in? %>
       <div style="padding:1px; outline-style: solid;">
     <% else %>
       <div>
@@ -22,7 +24,7 @@
     
     <center>
     
-    <% if vote %>
+    <% if vote && signed_in? %>
       <%= pluralize(vote.weight, 'point') %><br/>
     <% else %>
       <br/>
@@ -44,4 +46,6 @@
 
 <%= will_paginate %>
 
-<%= render 'vote_info' %>
+<% if signed_in? %>
+  <%= render 'vote_info' %>
+<% end %>

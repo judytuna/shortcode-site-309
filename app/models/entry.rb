@@ -20,6 +20,8 @@ class Entry < ActiveRecord::Base
   default_scope :order => 'entries.created_at DESC'
   
   # has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+  
   def image_name
     'im' + String(user_id) + '_' + String(id)
   end

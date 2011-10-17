@@ -1,3 +1,5 @@
+require 'digest'
+
 module EntriesHelper
 	# takes the list of entries, and returns a structure with two lists,
 	# :winners and :runnersup
@@ -31,5 +33,10 @@ module EntriesHelper
 	  end
 	  return r
 	end
+	
+  def mystringlol
+    "this is my string"
+  end
+  
 end
 
