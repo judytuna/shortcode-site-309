@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def edit
- #   @user = User.find(params[:id]) -- removed when i added the correct_user function
+#   @user = User.find(params[:id]) -- removed when i added the correct_user function
     @title = "Edit user" 
   end
 

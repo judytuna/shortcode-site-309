@@ -7,6 +7,18 @@ class Vote < ActiveRecord::Base
   
   validates :user_id, :presence => true
   validates :entry_id, :presence => true
+  
+  class SelfvoteValidator < ActiveModel::EachValidator
+    def validate_each(record, attribute, value)
+      if Entry.find_by_id(value).user.id == record.user_id
+        record.errors[attribute] << "can't be your own"
+      end
+    end
+  end
+  
+  validates :entry_id, :selfvote => true
+  # need a validation: user_id not equal to Entry.find_by_id(entry_id).user.id
+
 end
 
 
