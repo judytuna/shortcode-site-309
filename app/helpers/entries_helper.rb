@@ -33,10 +33,6 @@ module EntriesHelper
 	  end
 	  return r
 	end
-	
-  def mystringlol
-    "this is my string"
-  end
   
 end
 
