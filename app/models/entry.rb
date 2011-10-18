@@ -42,6 +42,10 @@ class Entry < ActiveRecord::Base
     Digest::SHA2.hexdigest(image_name + String('#bananas23'))
   end
   
+  def shortcode_full_hash
+    Digest::SHA2.hexdigest(shortcode)
+  end
+  
   def score
   	r = 0
   	votes.each do |v|
