@@ -5,8 +5,12 @@ module EntriesHelper
 	# :winners and :runnersup
 	def winners(l)
 		s = ''
-		nl = l.sort_by {|e| -e.score}
-		return {:winners => nl[0..2], :runnersup => nl[3..nl.size]}
+		# break ties with the length of the shrotcode,
+		# break ties after that with the code itself but hashed for an extra element
+		# of pseudo-randomness.
+		nl = l.sort_by {|e| [-e.score, e.shortcode.size, e.shortcode_full_hash]}
+		# put the runners up in alphabetical order.
+		return {:winners => nl[0..2], :runnersup => nl[3..nl.size].sort_by {|e| e.title.downcase}}
 	end
 	
 	# searches for substrings of s with no space or tab of length at least l
@@ -36,3 +40,4 @@ module EntriesHelper
   
 end
 
+	
