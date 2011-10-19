@@ -59,5 +59,6 @@ class EntriesController < ApplicationController
     @users = @entry.voters
   end
   
+  
 end
 

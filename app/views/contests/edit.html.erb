@@ -1,0 +1,18 @@
+<h1>Edit Contest</h1>
+
+<%= form_for(@contest) do |f| %>
+
+  <%= render 'fields', :f => f %>
+  
+  <nav>
+    <%= link_to "delete", @contest,
+    	:method => :delete,
+    	:confirm => "Deleting Contest.  Are you sure... I mean really sure?",
+        :title => "Delete #{@contest.title}" %>
+  </nav>
+  
+  <div class="actions">
+    <%= f.submit "Update Contest" %>
+  </div>
+<% end %>
+

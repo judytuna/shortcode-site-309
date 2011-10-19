@@ -37,6 +37,4 @@ module EntriesHelper
 	  end
 	  return r
 	end
-	
 end
-

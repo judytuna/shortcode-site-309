@@ -14,12 +14,16 @@
 	    	value=<%= entry.image_name %> />
 	    <input type="hidden" name="key"
 	    	value=<%= entry.key %> />
-    </form>
-    
+    </form>  
+  
     <nav>
-    <%= link_to "edit", edit_entry_path(entry) %> |
-    <%= link_to "show", entry_path(entry) %> |
-    <a href = "javascript: document.getElementById('render_<%= entry.image_name %>').submit()"> render </a>
+    <%= link_to "show", entry_path(entry) %>
+    <% if signed_in? && (current_user.admin? || current_user == entry.user) %>
+      | <%= link_to "edit", edit_entry_path(entry) %> 
+      | <a href = "javascript: document.getElementById('render_<%= entry.image_name %>').submit()"> render </a>
+      | <%= link_to "delete", entry, :method => :delete, :confirm => "You sure?",
+         :title => "delete" %>
+  <% end %>
     </nav>
     
     <a href = <%= entry.image_url %> >

@@ -23,7 +23,7 @@ class Entry < ActiveRecord::Base
 
   
   def image_name
-    'im' + String(user_id) + '_' + String(id)
+    'im' + hash_entry_params + hash_shortcode
   end
   
   def pov_server
@@ -53,6 +53,15 @@ class Entry < ActiveRecord::Base
   	end
   	return r
   end
+  
+  private
+    def hash_shortcode
+      Digest::SHA2.hexdigest(shortcode + String(user_id))[0..5]
+    end
+    
+    def hash_entry_params
+      Digest::SHA2.hexdigest(String(user_id) + String(id))[0..5]
+    end
 end
 
 
