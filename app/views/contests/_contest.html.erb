@@ -1,0 +1,38 @@
+
+<hr/>
+<h2> <%= link_to contest.title, contest_path(contest) %> </h2>
+
+<nav>
+    <%= link_to "edit", edit_contest_path(contest) %> |
+    <%= link_to "show", contest_path(contest) %>
+</nav>
+
+<label>Rules</label>
+  <div class="code"><%=h contest.rules %></div>
+<br/>
+
+<label>Ini</label>
+  <div class="code"><%=h contest.ini %></div>
+<br/>
+
+<label>Thumbnail Ini</label>
+  <div class="code"><%=h contest.thumbnailini %></div>
+<br/>
+
+<label>Start Date<label>
+  <div class="date"><%=h contest.startdate %></div>
+<br/>
+
+<label>Entry Deadline<label>
+  <div class="date"><%=h contest.entrydeadline %></div>
+<br/>
+
+<label>Voting Start<label>
+  <div class="date"><%=h contest.votingstart %></div>
+<br/>
+
+<label>Voting End<label>
+  <div class="date"><%=h contest.votingend %></div>
+<br/>
+
+<hr/>

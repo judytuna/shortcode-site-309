@@ -25,7 +25,11 @@
 		  <% else %>
 		  <li><%= link_to "Home", root_path %></li>
 		  <% end %>
-		
+		  
+		  <% if signed_in? %>
+		  <li><%= link_to "Contests", contests_path %></li>
+		  <% end %>
+		  
 		  <% if signed_in? %>
 		  <li><%= link_to "All Entries", entries_path %></li>
 		  <% end %>

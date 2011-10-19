@@ -1,0 +1,14 @@
+
+<h1 style="margin-top: 10px;" >Contests</h1>
+
+<nav>
+  <ul>
+	<li><%= link_to "New Contest", newcontest_path %></li>
+  </ul>
+</nav>
+
+<%= will_paginate %>
+
+<%= render @contests %>
+
+<%= will_paginate %>
