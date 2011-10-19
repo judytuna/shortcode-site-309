@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111007221700) do
+ActiveRecord::Schema.define(:version => 20111016232224) do
+
+  create_table "contests", :force => true do |t|
+    t.string   "title"
+    t.integer  "charlimit"
+    t.datetime "startdate"
+    t.datetime "entrydeadline"
+    t.datetime "votingstart"
+    t.datetime "votingend"
+    t.text     "rules"
+    t.text     "ini"
+    t.text     "thumbnailini"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "entries", :force => true do |t|
     t.string   "title"
