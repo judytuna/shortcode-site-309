@@ -6,20 +6,22 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h2>
-      <%= render 'entries/vote_info'%>
-
-        <nav>
-          <ul>
-            <li><%= link_to "New Entry", newentry_path %></li>
-          </ul>
-        </nav>
       
-      <% unless @user.entries.empty? %>
-        <br/>
-
-        <table class="entries" summary="User entries">
-          <%= render @entries %>
-        </table>
+      <% if @user.id == current_user.id or current_user.admin? %>
+      	<%= render 'entries/vote_info'%>
+      <% end %>
+      
+      <nav>
+        <ul>
+          <li><%= link_to "New Entry", newentry_path %></li>
+        </ul>
+      </nav>
+      
+      <% unless @user.entries.empty? %><br/>
+        
+      <table class="entries" summary="User entries">
+        <%= render @entries %>
+      </table>
         <%= will_paginate @entries %>
       <% end %>
     </td>

@@ -1,3 +1,4 @@
+<% if current_user.admin? %>
 
 <h1 style="margin-top: 10px;" >Contests</h1>
 
@@ -12,3 +13,9 @@
 <%= render @contests %>
 
 <%= will_paginate %>
+
+<% else %>
+
+Adminstrator access only.
+
+<% end %>

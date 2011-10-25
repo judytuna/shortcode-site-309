@@ -23,7 +23,7 @@
       | <a href = "javascript: document.getElementById('render_<%= entry.image_name %>').submit()"> render </a>
       | <%= link_to "delete", entry, :method => :delete, :confirm => "You sure?",
          :title => "delete" %>
-  <% end %>
+    <% end %>
     </nav>
     
     <a href = <%= entry.image_url %> >
@@ -54,6 +54,25 @@
     <span class="timestamp">
       Posted <%= time_ago_in_words(entry.created_at) %> ago.
     </span>
+    
+    <% if current_user.admin? %>
+      Total score: <%= entry.score%><br/>
+      <% if entry.votes.size > 0 %>
+        <table style="margin-top:0; border-spacing: 0; width:50%;">
+        <tr><td>Voter</td><td>Weight</td></tr>
+        <% entry.votes.each do |vote| %>
+	    <tr>
+	      <td>
+		    <%= User.find_by_id(vote.user_id).name %>
+		  </td>
+		  <td>
+		    <%= vote.weight %>
+		  </td>
+	    </tr>
+        <% end %>
+        </table>
+      <% end %>
+	<% end %>
     
   </td>
 </tr>

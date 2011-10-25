@@ -59,8 +59,7 @@ class User < ActiveRecord::Base
     votes.find_by_entry_id(entry).destroy
     puts "votes.size = " + votes.size.to_s + " user_id = " + id.to_s
   end
-  
-  
+    
   private
 
     def encrypt_password

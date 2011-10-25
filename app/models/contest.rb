@@ -4,6 +4,8 @@ class Contest < ActiveRecord::Base
   
   has_many :entries
   has_many :votes
+  
+  validates :title, :presence => true, :length => { :maximum => 200 }
 end
 
 # == Schema Information

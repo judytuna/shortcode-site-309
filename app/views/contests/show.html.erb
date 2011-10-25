@@ -1,1 +1,5 @@
+<% if current_user.admin? %>
 <%= render @contest %>
+<% else %>
+Adminstrator access only.
+<% end %>
