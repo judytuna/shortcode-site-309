@@ -24,6 +24,7 @@ class EntriesController < ApplicationController
 
   def create
     @entry = current_user.entries.build(params[:entry])
+    @entry.contest = Contest.current_contest
     if @entry.save
       flash[:success] = "Entry created."
       redirect_to current_user

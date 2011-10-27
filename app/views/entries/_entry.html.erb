@@ -52,7 +52,10 @@
     <% end %>
 
     <span class="timestamp">
-      Posted <%= time_ago_in_words(entry.created_at) %> ago.
+      Posted <%= time_ago_in_words(entry.created_at) %> ago
+      <% unless entry.contest == nil %>
+        in contest <%= entry.contest.title %>
+      <% end %>.
     </span>
     
     <% if current_user.admin? %>

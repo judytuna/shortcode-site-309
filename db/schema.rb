@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111016232224) do
+ActiveRecord::Schema.define(:version => 20111027075622) do
 
   create_table "contests", :force => true do |t|
     t.string   "title"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20111016232224) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "contest_id"
   end
 
   add_index "entries", ["created_at"], :name => "index_entries_on_created_at"
