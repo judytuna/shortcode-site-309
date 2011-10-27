@@ -55,7 +55,7 @@
       Posted <%= time_ago_in_words(entry.created_at) %> ago
       <% unless entry.contest == nil %>
         in contest <%= entry.contest.title %>
-      <% end %>.
+      <% end %>
     </span>
     
     <% if current_user.admin? %>
