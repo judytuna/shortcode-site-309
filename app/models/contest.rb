@@ -6,6 +6,21 @@ class Contest < ActiveRecord::Base
   has_many :votes
   
   validates :title, :presence => true, :length => { :maximum => 200 }
+  
+  # IT'S A CLASS METHOD!!!!!!!! Call it by going Contest.current_contest... we think
+  def self.current_contest
+    now = Time.now.utc
+    
+    # look through all contests
+    all.each do |contest| 
+      if now >= contest.startdate && now <= contest.votingend
+        return contest
+      end
+    end
+    # return nil if there is currently no contest running
+    return nil
+  end
+  
 end
 
 # == Schema Information
