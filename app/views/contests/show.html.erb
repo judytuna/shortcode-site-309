@@ -1,4 +1,4 @@
-<% if current_user.admin? %>
+<% if current_user.admin? or Contest.current_contest==@contest %>
 <%= render @contest %>
 <% else %>
 Adminstrator access only.

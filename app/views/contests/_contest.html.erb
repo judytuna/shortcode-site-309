@@ -1,24 +1,49 @@
 
 <hr/>
-<h2> <%= link_to contest.title, contest_path(contest) %> </h2>
+<h2> <%= contest.title %> </h2>
 
+<% if current_user.admin? %>
 <nav>
     <%= link_to "edit", edit_contest_path(contest) %> |
     <%= link_to "show", contest_path(contest) %>
 </nav>
+<% end %>
 
-<label>Rules</label>
-  <div class="code"><%=h contest.rules %></div>
-<br/>
+<div class="rules">
+
+<p>
+To submit an entry, just sign up, log in, navigate to "My Home" and
+click the "New Entry" button.  On the entry deadline, any entry with valid povray
+code that renders an image will enter the voting gallery.  All users with at
+least one entry will be able to vote for the winner.
+</p>
+
+<p><%=h contest.rules %></p>
+
+<p>
+Entries are to be edited no later than <%=h contest.startdate.strftime("%A %B %d, %Y at %I:%M %p %Z") %>.
+Voting starts on <%=h contest.startdate.strftime("%A %B %d, %Y at %I:%M %p %Z") %>.  Entries that fail to render
+by then might not be completely visible during the voting.  On <%=h contest.votingend.strftime("%A %B %d, %Y at %I:%M %p %Z") %>,
+the voting closes, and the winners gallery is made visible
+first second and third place winners displayed prominently at the top.<br/>
+</p>
+
+<p>
+Entries will be rendered once to create a thumbnail, and once to create a
+full sized using the following ini files.
+</p>
 
 <label>Ini</label>
   <div class="code"><%=h contest.ini %></div>
 <br/>
 
-<label>Thumbnail Ini</label>
+<label>Ini for Thumbnail</label>
   <div class="code"><%=h contest.thumbnailini %></div>
 <br/>
 
+</div>
+
+<% if current_user.admin? %>
 <label>Start Date<label>
   <div class="date"><%=h contest.startdate %></div>
 <br/>
@@ -34,5 +59,6 @@
 <label>Voting End<label>
   <div class="date"><%=h contest.votingend %></div>
 <br/>
+<% end %>
 
 <hr/>

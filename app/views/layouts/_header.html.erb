@@ -21,7 +21,7 @@
       <nav class="round">
 		<ul>
 		  <% if signed_in? %>
-		  <li><%= link_to "My Entries", current_user %></li>
+		  <li><%= link_to "My Home", current_user %></li>
 		  <% else %>
 		  <li><%= link_to "Home", root_path %></li>
 		  <% end %>
@@ -54,6 +54,11 @@
 		</ul>
       </nav>
       
+    </div>
+    
+    <div style="background-color: #444; font-size:1.2em; padding: 10px; margin-top: 5px;">
+    <%= Contest.current_contest.title %> <%= link_to "(contest rules)", contest_path(Contest.current_contest) %>
+    Entries due <%=h Contest.current_contest.startdate.strftime("%A %B %d, %Y at %I:%M %p %Z") %>.
     </div>
   </div>
 

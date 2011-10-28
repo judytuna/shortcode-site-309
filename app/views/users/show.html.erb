@@ -1,7 +1,6 @@
 <table class="profile" summary="Profile information">
   <tr>
     <td class="main">
-      <h1>My Entries</h1>
       <h2>
         <%= gravatar_for @user %>
         <%= @user.name %>
@@ -10,6 +9,8 @@
       <% if @user.id == current_user.id or current_user.admin? %>
       	<%= render 'entries/vote_info'%>
       <% end %>
+      
+      <h1 style="margin-top:10px;">Entries</h1>
       
       <nav>
         <ul>

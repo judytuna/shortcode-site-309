@@ -236,8 +236,29 @@ table.entries div {
   margin-top: 0em;
   border: 1px solid #999;
   background-color: #EEE;
+  padding: 5px;
   color: #000;
 }
+
+.code {
+  white-space: pre-wrap;
+  
+  margin-top: 0em;
+  border: 1px solid #999;
+  background-color: #EEE;
+  padding: 5px;
+  color: #000;
+}
+
+.rules {
+  color: #fff;
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+  border-radius:         5px;
+  padding: 5px;
+  background-color: #333;
+}
+
 
 table.entries tr {
   background-color: #DDD;
