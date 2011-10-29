@@ -2,7 +2,7 @@
 <hr/>
 <h2> <%= contest.title %> </h2>
 
-<% if current_user.admin? %>
+<% if current_user and current_user.admin? %>
 <nav>
     <%= link_to "edit", edit_contest_path(contest) %> |
     <%= link_to "show", contest_path(contest) %>
@@ -43,7 +43,7 @@ full sized using the following ini files.
 
 </div>
 
-<% if current_user.admin? %>
+<% if current_user and current_user.admin? %>
 <label>Start Date<label>
   <div class="date"><%=h contest.startdate %></div>
 <br/>

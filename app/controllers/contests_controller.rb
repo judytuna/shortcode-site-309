@@ -1,6 +1,6 @@
 class ContestsController < ApplicationController
-  before_filter :authenticate
-  # before_filter :admin_user, :only => :voters
+  before_filter :authenticate, :except => :show
+  before_filter :admin_user, :except => :show
   
   def show
     @contest = Contest.find(params[:id])

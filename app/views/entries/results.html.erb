@@ -2,7 +2,7 @@
 
 <%= will_paginate %>
 
-  <% p = winners(@entries) %>
+<% p = winners(@entries) %>
 
 <table class="thumbnail">
 <% p[:winners].each do |entry| %>
@@ -23,14 +23,18 @@
   <% cols = 3 %>
   <% i = 0 %>
   <% p[:runnersup].each do |entry| %>
-  <% url = 'entries/'+String(entry.id) %>
+  <% url = 'entries/' + entry.id.to_s %>
   
   <% if i%cols==0 %> <tr> <% end %>
     <td style="background-color: f00;">
     <center>
+    
+    <% vote = nil %>
+    <% if current_user %>
     <% vote = current_user.votes.find_by_entry_id(entry.id) %>
+    <% end %>
+    
     <br/>
-   	
     <a href = <%= url %> >
     <img src = "<%= entry.pov_server + 'thumbnails/' + entry.image_name %>"
     	onerror="this.src='images/default_thumb.png';">

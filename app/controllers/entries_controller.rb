@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_filter :authenticate, :only => [:create, :destroy]
+  before_filter :authenticate, :except => [:results]
   # before_filter :admin_user, :only => :voters
 
   def show
