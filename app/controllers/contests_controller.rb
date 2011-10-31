@@ -47,5 +47,9 @@ class ContestsController < ApplicationController
     flash[:success] = "Contest deleted."
     redirect_to contests_path
   end
+  
+  def admin_user
+    current_user.admin?
+  end
 end
 

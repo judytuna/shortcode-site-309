@@ -64,25 +64,35 @@
     </div>
     
 	<% contest = Contest.current_contest %>
-    <% now = Time.now %>
+    <% now = Contest.current_time %>
     
     <div style="background-color: #444; font-size:1.2em; padding: 10px; margin-top: 5px;">
-    <%= contest.title %> <%= link_to "(contest rules)", contest_path(contest) %>
     
-    <% if now >= contest.startdate and now < contest.entrydeadline %>
-      Entries due <%=h contest.entrydeadline.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.
-    <% end %>
+    <% if contest %>
+      <%= contest.title %> <%= link_to "(contest rules)", contest_path(contest) %>
+      
+      <% if now >= contest.startdate and now < contest.entrydeadline %>
+        Entries due <%=h contest.entrydeadline.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.
+      <% end %>
     
-    <% if now >= contest.entrydeadline and now < contest.votingstart %>
-      Entries are rendering.  Voting will start on <%=h contest.votingstart.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.
-    <% end %>
+      <% if now >= contest.entrydeadline and now < contest.votingstart %>
+        Entries are rendering.  Voting will start on <%=h contest.votingstart.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.
+      <% end %>
+      
+      <% if now >= contest.votingstart and now < contest.votingend %>
+        Voting has begin.  Votes must be submitted by <%=h contest.votingend.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.
+      <% end %>
     
-    <% if now >= contest.votingstart and now < contest.votingend %>
-      Voting has begin.  Votes must be submitted by <%=h contest.votingend.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.
-    <% end %>
+      <% if now > contest.votingend %>
+        Voting is now closed.  See the results of the contest <%= link_to "here", "results" %>.
+      <% end %>
     
-    <% if now > contest.votingend %>
-      Voting is now closed.  See the results of the contest <%= link_to "here", "results" %>.
+    <% else %>
+      The contest is taking a vacation.
+      <% nc = Contest.next_contest %>
+      <% if nc %>
+        Come back <% nc.startdate.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %> to enter in the next one.
+      <% end %>
     <% end %>
     
     </div>

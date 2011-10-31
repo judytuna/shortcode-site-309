@@ -1,3 +1,4 @@
+
 class Contest < ActiveRecord::Base
   attr_accessible :title, :rules, :ini, :thumbnailini, :charlimit
   attr_accessible :startdate, :entrydeadline, :votingstart, :votingend
@@ -7,9 +8,23 @@ class Contest < ActiveRecord::Base
   
   validates :title, :presence => true, :length => { :maximum => 200 }
   
-  # IT'S A CLASS METHOD!!!!!!!! Call it by going Contest.current_contest... we think
+  @@time_warp = 0
+  
+  def self.time_warp
+    @@time_warp
+  end
+  
+  def self.time_warp=(n)
+    @@time_warp = n
+  end
+  
+  def self.current_time
+    Time.now.utc + @@time_warp
+  end
+  
+  # IT'S A CLASS METHOD!!!!!!!! Call it by going Contest.current_contest
   def self.current_contest
-    now = Time.now.utc
+    now = current_time
     
     # look through all contests
     all.each do |contest| 
@@ -21,7 +36,21 @@ class Contest < ActiveRecord::Base
     return nil
   end
   
+  def self.next_contest
+    now = current_time
+    
+    n = all.max_by {|c| c.startdate}
+    if n and n.startingdate > now
+    	return n
+    end
+    
+    return nil
 end
+  
+end
+
+Contest.time_warp = 0
+
 
 # == Schema Information
 #

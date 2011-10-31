@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_filter :authenticate, :except => [:results]
+  before_filter :check_editable, :only => [:edit, :update, :destroy]
   # before_filter :admin_user, :only => :voters
 
   def show
@@ -60,6 +61,17 @@ class EntriesController < ApplicationController
     @users = @entry.voters
   end
   
+  private
   
+  def check_editable
+    @entry = Entry.find(params[:id])
+    if current_user.admin? or @entry.editable?
+      return true
+    else
+      flash[:error] = "Entry not editable."
+      redirect_to current_user
+    end
+    return false
+  end
 end
 

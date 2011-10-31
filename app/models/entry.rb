@@ -20,7 +20,6 @@ class Entry < ActiveRecord::Base
   default_scope :order => 'entries.created_at DESC'
   
   # has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-
   
   def image_name
     'im' + hash_entry_params + hash_shortcode
@@ -52,6 +51,28 @@ class Entry < ActiveRecord::Base
   		r += v.weight
   	end
   	return r
+  end
+  
+  def acquire_contest
+    now = Contest.current_time
+	if not contest
+	  Contest.all.each do |c|
+        if now >= c.startdate and created_at >= c.startdate and created_at < c.entrydeadline
+		  contest = c
+		  save
+		  break
+        end
+	  end
+	end
+  end
+  
+  def editable?
+    acquire_contest
+    now = Contest.current_time
+    if contest and now <= contest.entrydeadline
+      return true
+    end
+    return false
   end
   
   private
