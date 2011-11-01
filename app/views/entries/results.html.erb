@@ -12,9 +12,12 @@
 <% p[:winners].each do |entry| %>
 <tr><td>
 <center>
+<% url = 'entries/' + entry.id.to_s %>
+<a href = <%= url %> >
 <img width = 500 src = "<%= entry.pov_server + 'images/' + entry.image_name %>"
     	onerror="this.src='images/default_thumb.png';">
 <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
+</a>
 </center>
 </td></tr>
 
