@@ -1,5 +1,4 @@
 
-<hr/>
 <h2> <%= contest.title %> </h2>
 
 <% if current_user and current_user.admin? %>
@@ -11,6 +10,8 @@
 
 <div class="rules">
 
+<h2>Rules</h2>
+
 <p>
 To submit an entry, just sign up, log in, navigate to "My Home" and
 click the "New Entry" button.  On the entry deadline, any entry with valid povray
@@ -20,13 +21,30 @@ least one entry will be able to vote for the winner.
 
 <p><%=h contest.rules %></p>
 
+<hr/>
+
+<h2>Important Dates</h2>
+
 <p>
-Entries are to be edited no later than <%=h contest.startdate.strftime("%A %B %d, %Y at %I:%M %p %Z") %>.
-Voting starts on <%=h contest.startdate.strftime("%A %B %d, %Y at %I:%M %p %Z") %>.  Entries that fail to render
-by then might not be completely visible during the voting.  On <%=h contest.votingend.strftime("%A %B %d, %Y at %I:%M %p %Z") %>,
-the voting closes, and the winners gallery is made visible
-first second and third place winners displayed prominently at the top.<br/>
+<b><%=h contest.entrydeadline.strftime("%A %B %d, %Y at %I:%M %p %Z") %></b>.  Entries are due.
+All entries submitted for this contest will be saved and become part of the voting gallery.
+Contestants may no longer edit or delete their entries.  Entries are given some time
+to render before voting begins.
 </p>
+
+<p>
+<b><%=h contest.votingstart.strftime("%A %B %d, %Y at %I:%M %p %Z") %></b> Voting begins.
+Contestents vote for their top three choices.  Contestents may not vote for their own entries.
+</p>
+
+<p>
+<b><%=h contest.votingend.strftime("%A %B %d, %Y at %I:%M %p %Z") %></b>
+Voting closes, contest results are posted.<br/>
+</p>
+
+<hr/>
+
+<h2>Ini Files</h2>
 
 <p>
 Entries will be rendered once to create a thumbnail, and once to create a
@@ -61,4 +79,3 @@ full sized using the following ini files.
 <br/>
 <% end %>
 
-<hr/>

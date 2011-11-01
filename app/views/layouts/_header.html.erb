@@ -24,7 +24,7 @@
         <% end %>
       </div>
       
-
+      
       <nav class="round">
 		<ul>
 		  <% if signed_in? %>
@@ -32,25 +32,25 @@
 		  <% else %>
 		  <li><%= link_to "Home", root_path %></li>
 		  <% end %>
-		  
-		  <% if signed_in? and current_user.admin? %>
-		  <li><%= link_to "Contests", contests_path %></li>
+
+		  <% if signed_in? and Contest.current_contest and Contest.current_contest.voting_window? %>
+		  <li><%= link_to "Voting Gallery", entries_path %></li>
 		  <% end %>
 		  
 		  <% if signed_in? %>
-		  <li><%= link_to "Gallery", entries_path %></li>
+		  <li><%= link_to "Results", results_path %></li>
 		  <% end %>
 		  
 		  <% if signed_in? %>
 		  <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
 		  <% end %>
-		  
-		  <% if signed_in? %>
-		  <li><%= link_to "All Users", users_path %></li>
+          
+		  <% if signed_in? and current_user.admin? %>
+		  <li><%= link_to "Contests", contests_path %></li>
 		  <% end %>
 		  
 		  <% if signed_in? %>
-		  <li><%= link_to "Results", results_path %></li>
+		  <li><%= link_to "All Users", users_path %></li>
 		  <% end %>
 		  
 		  <% if signed_in? %>
@@ -80,7 +80,7 @@
       <% end %>
       
       <% if now >= contest.votingstart and now < contest.votingend %>
-        Voting has begin.  Votes must be submitted by <%=h contest.votingend.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.
+        Voting has begun.  Votes must be submitted by <%=h contest.votingend.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.
       <% end %>
     
       <% if now > contest.votingend %>

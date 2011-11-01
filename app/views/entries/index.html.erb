@@ -1,9 +1,11 @@
 
-<h1 style="margin-top: 10px;" >Gallery</h1>
+<h1 style="margin-top: 10px;" >Voting Gallery</h1>
 
 <%= will_paginate %>
 
 <% contest = Contest.current_contest %>
+
+<% if current_user and current_user.may_vote? %>
 
 <% if contest and contest.voting_window? %>
 
@@ -51,6 +53,12 @@
 <% else %>
 
 Voting gallery not available.
+
+<% end %>
+
+<% else %>
+
+Must have an entry in the current contest to vote.
 
 <% end %>
 
