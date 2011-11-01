@@ -2,7 +2,7 @@
 
 <%= will_paginate %>
 
-<% contest = Contest.current_contest %>
+<% contest = Contest.latest_contest %>
 
 <% if contest %>
 

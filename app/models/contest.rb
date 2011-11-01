@@ -35,6 +35,11 @@ class Contest < ActiveRecord::Base
     return nil # no contest
   end
   
+  def self.latest_contest
+    now = current_time
+    return all.max_by {|c| [now > current_time ? 1 : 0, c.startdate]}
+  end
+  
   def self.next_contest
     now = current_time
     
