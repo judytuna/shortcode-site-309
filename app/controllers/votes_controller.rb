@@ -2,6 +2,7 @@ class VotesController < ApplicationController
   before_filter :authenticate
   before_filter :check_entry_contest, :only => [:create]
   before_filter :check_time_window
+  before_filter :check_may_vote, :only => [:create]
   
   def create
     @entry = Entry.find(params[:vote][:entry_id])
@@ -36,5 +37,9 @@ class VotesController < ApplicationController
 	  return true
 	end
 	return false
+  end
+  
+  def check_may_vote
+    return current_user.may_vote?
   end
 end

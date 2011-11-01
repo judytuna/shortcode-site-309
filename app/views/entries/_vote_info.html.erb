@@ -1,7 +1,7 @@
 <div id = "vote_info">
 
 <% contest = Contest.current_contest %>
-<% if contest and contest.voting_window? %>
+<% if contest and contest.voting_window? and current_user and current_user.may_vote? %>
 
 <h1>Votes</h1>
 
