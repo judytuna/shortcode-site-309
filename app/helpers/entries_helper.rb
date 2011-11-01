@@ -10,6 +10,10 @@ module EntriesHelper
 		# of pseudo-randomness.
 		nl = l.sort_by {|e| [-e.score, e.shortcode.size, e.shortcode_full_hash]}
 		# put the runners up in alphabetical order.
+		
+		if nl.size < 3
+		  return {:winners => nl, :runnersup => []}
+		end
 		return {:winners => nl[0..2], :runnersup => nl[3..nl.size].sort_by {|e| e.title.downcase}}
 	end
 	

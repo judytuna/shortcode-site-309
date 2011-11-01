@@ -2,7 +2,11 @@
 
 <%= will_paginate %>
 
-<% p = winners(@entries) %>
+<% contest = Contest.current_contest %>
+
+<% if contest %>
+
+<% p = winners(contest.entries) %>
 
 <table class="thumbnail">
 <% p[:winners].each do |entry| %>
@@ -14,39 +18,43 @@
 </center>
 </td></tr>
 
-<%end%>
+<% end %>
 </table>
 
-<h1>The Rest </h1> (in pseudorandom order)
+<% if p[:runnersup].size > 0 %>
+  <h1>The Rest </h1> (in pseudorandom order)
 
-<table class="thumbnail">
-  <% cols = 3 %>
-  <% i = 0 %>
-  <% p[:runnersup].each do |entry| %>
-  <% url = 'entries/' + entry.id.to_s %>
+  <table class="thumbnail">
+    <% cols = 3 %>
+    <% i = 0 %>
+    <% p[:runnersup].each do |entry| %>
+    <% url = 'entries/' + entry.id.to_s %>
   
-  <% if i%cols==0 %> <tr> <% end %>
-    <td style="background-color: f00;">
-    <center>
+    <% if i%cols==0 %> <tr> <% end %>
+      <td style="background-color: f00;">
+      <center>
     
-    <% vote = nil %>
-    <% if current_user %>
-    <% vote = current_user.votes.find_by_entry_id(entry.id) %>
+      <% vote = nil %>
+      <% if current_user %>
+      <% vote = current_user.votes.find_by_entry_id(entry.id) %>
+      <% end %>
+      
+      <br/>
+      <a href = <%= url %> >
+      <img src = "<%= entry.pov_server + 'thumbnails/' + entry.image_name %>"
+         onerror="this.src='images/default_thumb.png';">
+      <br/>
+      <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
+      </a>
+      </center>
+      </td>
+    <% if i%cols==cols-1 %> </tr> <% end %>
+    <% i+=1 %>
     <% end %>
-    
-    <br/>
-    <a href = <%= url %> >
-    <img src = "<%= entry.pov_server + 'thumbnails/' + entry.image_name %>"
-    	onerror="this.src='images/default_thumb.png';">
-    <br/>
-    <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
-    </a>
-    </center>
-    </td>
-  <% if i%cols==cols-1 %> </tr> <% end %>
-  <% i+=1 %>
-  <% end %>
-</table>
+  </table>
+<% end %>
+
+<% end %>
 
 <%= will_paginate %>
 

@@ -26,7 +26,7 @@ class Contest < ActiveRecord::Base
     now = current_time
     
     # look through all contests
-    all.each do |contest| 
+    all.each do |contest|
       if now >= contest.startdate &&
          now <= contest.votingend
         return contest

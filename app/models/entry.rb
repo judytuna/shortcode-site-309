@@ -60,7 +60,7 @@ class Entry < ActiveRecord::Base
         if now >= c.startdate and created_at >= c.startdate and created_at < c.entrydeadline
 		  contest = c
 		  save
-		  break
+		  return c
         end
 	  end
 	end
