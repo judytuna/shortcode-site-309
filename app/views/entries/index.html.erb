@@ -3,49 +3,60 @@
 
 <%= will_paginate %>
 
+<% contest = Contest.current_contest %>
+
+<% if contest and contest.voting_window? %>
+
 <table class="thumbnail">
   <% cols = 3 %>
   <% i = 0 %>
-  <% @entries.each do |entry| %>
-  <% url = 'entries/'+String(entry.id) %>
-  
-  <% if i%cols==0 %> <tr> <% end %>
-    <td>
+  <% @entries.find_all{|e| e.contest == contest}.each do |entry| %>
+    <% url = 'entries/'+String(entry.id) %>
     
-    <% if signed_in? %>
-      <% vote = current_user.votes.find_by_entry_id(entry.id) %>
-    <% end %>
-    
-    <% if vote && signed_in? %>
-      <div style="padding:1px; outline-style: solid;">
-    <% else %>
-      <div>
-    <% end %>
-    
-    <center>
-    
-    <% if vote && signed_in? %>
-      <%= pluralize(vote.weight, 'point') %><br/>
-    <% else %>
+    <% if i%cols==0 %> <tr> <% end %>
+      <td>
+      
+      <% if signed_in? %>
+        <% vote = current_user.votes.find_by_entry_id(entry.id) %>
+      <% end %>
+      
+      <% if vote && signed_in? %>
+        <div style="padding:1px; outline-style: solid;">
+      <% else %>
+        <div>
+      <% end %>
+      
+      <center>
+      
+      <% if vote && signed_in? %>
+        <%= pluralize(vote.weight, 'point') %><br/>
+      <% else %>
+        <br/>
+      <% end %>
+     	
+      <a href = <%= url %> >
+      <img src = "<%= entry.pov_server + 'thumbnails/' + entry.image_name %>"
+           onerror="this.src='images/default_thumb.png';">
       <br/>
-    <% end %>
-   	
-    <a href = <%= url %> >
-    <img src = "<%= entry.pov_server + 'thumbnails/' + entry.image_name %>"
-    	onerror="this.src='images/default_thumb.png';">
-    <br/>
-    <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
-    </a>
-    </center>
-    </div>
-    </td>
-  <% if i%cols==cols-1 %> </tr> <% end %>
-  <% i+=1 %>
+      <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
+      </a>
+      </center>
+      </div>
+      </td>
+    <% if i%cols==cols-1 %> </tr> <% end %>
+    <% i+=1 %>
   <% end %>
 </table>
+
+<% else %>
+
+Voting gallery not available.
+
+<% end %>
 
 <%= will_paginate %>
 
 <% if signed_in? %>
   <%= render 'vote_info' %>
 <% end %>
+
