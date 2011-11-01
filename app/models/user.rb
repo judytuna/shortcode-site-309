@@ -43,21 +43,24 @@ class User < ActiveRecord::Base
     (user && user.salt == cookie_salt) ? user : nil
   end
   
+  def votes_for_contest(contest)
+    return votes.find_all{|vote| vote.contest == contest }
+  end
+  
   def votedfor?(entry)
     votes.find_by_entry_id(entry)
   end
   
-  def cast_vote!(entry, weight)
-    vote = votes.find_by_weight(weight)
-    if vote
+  def cast_vote!(contest, entry, weight)
+    vc = votes_for_contest(contest)
+    vc.find_all{|vote| vote.weight == weight}.each do |vote|
       Vote.destroy(vote)
     end
-    votes.create!(:entry_id => entry.id, :weight => weight)
+    votes.create!(:contest_id => contest.id, :entry_id => entry.id, :weight => weight)
   end
   
   def unvote!(entry)
     votes.find_by_entry_id(entry).destroy
-    puts "votes.size = " + votes.size.to_s + " user_id = " + id.to_s
   end
     
   private

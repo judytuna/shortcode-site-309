@@ -12,11 +12,13 @@
       
       <h1 style="margin-top:10px;">Entries</h1>
       
+      <% if Contest.current_contest and Contest.current_contest.submission_window? %>
       <nav>
         <ul>
           <li><%= link_to "New Entry", newentry_path %></li>
         </ul>
       </nav>
+      <% end %>
       
       <% unless @user.entries.empty? %>
       <br/>

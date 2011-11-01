@@ -1,7 +1,9 @@
-<%= render 'vote_info' %>
 
-<% if signed_in? && current_user.id != @entry.user_id %>
-<%=  render "cast_vote_form" %>
+<% if Contest.current_contest and Contest.current_contest.voting_window? %>
+  <%= render 'vote_info' %>
+  <% if signed_in? && current_user.id != @entry.user_id %>
+  <%=  render "cast_vote_form" %>
+  <% end %>
 <% end %>
 
 <table class="entries">

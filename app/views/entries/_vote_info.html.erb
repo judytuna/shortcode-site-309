@@ -1,10 +1,15 @@
 <div id = "vote_info">
 
+<% contest = Contest.current_contest %>
+<% if contest and contest.voting_window? %>
+
 <h1>Votes</h1>
+
+Your choices for <%= contest.title %>
 
 <div class = "round" style = "padding: 10px; background-color:#444;">
 
-<% if current_user.votes  %>
+<% if current_user.votes_for_contest(contest)  %>
 
 <!--Work-around for a bug where a phantom vote object
     with no id or weight appears in the list--!>
@@ -19,12 +24,11 @@
 <table>
 
 <tr>
-<td>Points </td>
+<td>Points</td>
 <td>Title</td>
 </tr>
 
 <% revised_vote_list.sort_by! {|vote| -vote.weight} %>
-
 <% revised_vote_list.each do |vote| %>
 <%if vote.id %>
 <tr>
@@ -45,3 +49,5 @@
 </div>
 
 </div>
+
+<% end %>
