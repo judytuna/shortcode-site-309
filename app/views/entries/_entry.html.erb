@@ -4,14 +4,13 @@
       <%= link_to entry.title, entry_path(entry) %>
     </span></h2>
     
-    <nav>
-    <%= link_to "show", entry_path(entry) %>
     <% if signed_in? && (current_user.admin? || (current_user == entry.user && entry.editable?)) %>
-      | <%= link_to "edit", edit_entry_path(entry) %>
-      | <%= link_to "delete", entry, :method => :delete, :confirm => "You sure?",
+    <nav>
+      <%= link_to "edit", edit_entry_path(entry) %> |
+      <%= link_to "delete", entry, :method => :delete, :confirm => "You sure?",
          :title => "delete" %>
-    <% end %>
     </nav>
+    <% end %>
     
     <% status = entry.render_status %>
     
