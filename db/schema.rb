@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031215017) do
+ActiveRecord::Schema.define(:version => 20111102222604) do
 
   create_table "contests", :force => true do |t|
     t.string   "title"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20111031215017) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "weight"
+    t.integer  "contest_id"
   end
 
   add_index "votes", ["entry_id"], :name => "index_votes_on_entry_id"

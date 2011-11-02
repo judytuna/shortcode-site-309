@@ -35,6 +35,10 @@ class Entry < ActiveRecord::Base
   	Entry.pov_server + "images/" + image_name + '.png'
   end
   
+  def thumbnail_url
+  	Entry.pov_server + "thumbnails/" + image_name + '.png'
+  end
+  
   def shortcode_url
   	Entry.pov_server + "shortcode/" + image_name + '.pov'
   end

@@ -73,7 +73,7 @@ class Contest < ActiveRecord::Base
   
 end
 
-Contest.time_warp = 0 * 24 * 60 * 60
+Contest.time_warp = 1 * 24 * 60 * 60
 
 
 # == Schema Information

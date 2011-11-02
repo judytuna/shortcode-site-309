@@ -29,7 +29,9 @@
     
     <% end %>
     
-    <%= link_to "(render status)", entry_path(entry) + '/renderstatus' %>
+    <% if current_user == entry.user %>
+      <%= link_to "(render status)", entry_path(entry) + '/renderstatus' %>
+    <% end %>
     
     <br/>
     <br/>
