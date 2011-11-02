@@ -6,6 +6,7 @@ class VotesController < ApplicationController
   
   def create
     @entry = Entry.find(params[:vote][:entry_id])
+    puts "as we create the vote current contest id:"
     contest = Contest.current_contest
     vote = current_user.cast_vote!(contest, @entry, params[:weight].to_i)
     respond_to do |format|

@@ -56,7 +56,10 @@ class User < ActiveRecord::Base
     vc.find_all{|vote| vote.weight == weight}.each do |vote|
       Vote.destroy(vote)
     end
-    votes.create!(:contest_id => contest.id, :entry_id => entry.id, :weight => weight)
+    vote = votes.create!(:contest_id => contest.id, :entry_id => entry.id, :weight => weight)
+    vote.contest = contest
+    vote.save
+	vote
   end
   
   def unvote!(entry)

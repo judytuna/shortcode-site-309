@@ -1,3 +1,4 @@
+
 class EntriesController < ApplicationController
   before_filter :authenticate, :except => [:results]
   before_filter :check_editable, :only => [:edit, :update, :destroy]
@@ -27,7 +28,8 @@ class EntriesController < ApplicationController
     @entry = current_user.entries.build(params[:entry])
     @entry.contest = Contest.current_contest
     if @entry.save
-      flash[:success] = "Entry created."
+      flash[:success] = "Entry created. A new render request has been submitted."
+      @entry.render_request
       redirect_to current_user
     else
       render 'entries/new'
@@ -36,8 +38,17 @@ class EntriesController < ApplicationController
   
   def update
     @entry = Entry.find(params[:id])
+    old_shortcode = @entry.shortcode
     if @entry.update_attributes(params[:entry])
-      flash[:success] = "Entry updated."
+      message = "Entry updated."
+      
+      if old_shortcode and old_shortcode != @entry.shortcode
+        @entry.render_request
+    	message += " A new render request has been submitted."
+      end
+
+      flash[:success] = message
+    
       redirect_to current_user
     else
       render 'entries/edit'
@@ -49,6 +60,11 @@ class EntriesController < ApplicationController
     @title = "Edit Entry"
   end
   
+  def renderstatus
+    @entry = Entry.find(params[:id])
+    @title = "Entry Render Status"
+  end
+
   def destroy
     Entry.find(params[:id]).destroy
     flash[:success] = "Entry deleted."

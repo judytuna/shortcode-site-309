@@ -36,6 +36,8 @@ PovrayShortcode::Application.routes.draw do
   match '/newcontest', :to => 'contests#new'
   
   match '/results', :to => 'entries#results'
+  
+  match '/entries/:id/renderstatus', :to => 'entries#renderstatus'
 
   root :to => 'pages#home'
 

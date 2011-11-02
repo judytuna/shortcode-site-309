@@ -1,8 +1,12 @@
 
 <% if Contest.current_contest and Contest.current_contest.voting_window? and current_user and current_user.may_vote? %>
   <%= render 'vote_info' %>
-  <% if signed_in? && current_user.id != @entry.user_id %>
-  <%=  render "cast_vote_form" %>
+  <% if signed_in? %>
+    <% if current_user.id == @entry.user_id %>
+      This entry is yours.
+    <% else %>
+      <%=  render "cast_vote_form" %>
+    <% end %>
   <% end %>
 <% end %>
 

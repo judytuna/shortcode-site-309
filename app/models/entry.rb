@@ -1,4 +1,6 @@
 require 'digest'
+require 'net/http'
+require 'uri'
 
 class Entry < ActiveRecord::Base
   attr_accessible :title, :shortcode, :longcode, :comments, :picture
@@ -19,22 +21,46 @@ class Entry < ActiveRecord::Base
   
   default_scope :order => 'entries.created_at DESC'
   
-  # has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  
+  
+  def self.pov_server
+    "http://ec2-107-20-100-184.compute-1.amazonaws.com/"
+  end
   
   def image_name
     'im' + hash_entry_params + hash_shortcode
   end
   
-  def pov_server
-    "http://ec2-107-20-100-184.compute-1.amazonaws.com/"
-  end
-  
   def image_url
-  	pov_server + "images/" + image_name + '.png'
+  	Entry.pov_server + "images/" + image_name + '.png'
   end
   
   def shortcode_url
-  	pov_server + "shortcode/" + image_name + '.pov'
+  	Entry.pov_server + "shortcode/" + image_name + '.pov'
+  end
+  
+  def render_request
+    res = Net::HTTP.post_form(URI.parse(Entry.pov_server + 'cgi-bin/request.py'),
+        {'name'=>image_name,
+         'code'=>shortcode,
+         'ini'=>contest.ini,
+         'thumbnailini'=>contest.thumbnailini,
+         'key'=>key})
+  end
+  
+  def render_status
+    res = Net::HTTP.post_form(URI.parse(Entry.pov_server + 'cgi-bin/status.py'),
+        {'name'=>image_name,
+         'key'=>key})
+    res.body
+  end
+  
+  def render_status_html
+    res = Net::HTTP.post_form(URI.parse(Entry.pov_server + 'cgi-bin/view.py'),
+        {'name'=>image_name,
+         'key'=>key})
+    # a hack to turn relative path names for images into absolute paths
+    res.body.gsub( /<\s*img\s+src\s*=\s*"/, '<img src = "' + Entry.pov_server + 'cgi-bin/')
   end
   
   def key

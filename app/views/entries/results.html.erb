@@ -1,10 +1,10 @@
 <h1>Contest Winners</h1>
 
-<%= will_paginate %>
 
 <% contest = Contest.latest_contest %>
+<% if contest and contest.over? %>
 
-<% if contest %>
+<%= will_paginate %>
 
 <% p = winners(contest.entries) %>
 
@@ -58,7 +58,13 @@
   </table>
 <% end %>
 
+<%= will_paginate %>
+
+<% else %>
+
+<% if contest %>
+<%= contest.title %> is in progress.  Results will be available on <%= contest.votingend.strftime("%A %B %d, %Y at %I:%M %p %Z") %>.
 <% end %>
 
-<%= will_paginate %>
+<% end %>
 

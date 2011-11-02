@@ -66,9 +66,14 @@ class Contest < ActiveRecord::Base
     return (now >= votingstart and now < votingend)
   end
   
+  def over?
+    now = Contest.current_time
+    return (now > votingend)
+  end
+  
 end
 
-Contest.time_warp = 0 * 24 * 60 * 60
+Contest.time_warp = -1 * 24 * 60 * 60
 
 
 # == Schema Information

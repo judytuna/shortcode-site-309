@@ -5,21 +5,26 @@
 
 <h1>Votes</h1>
 
+<nav>
+  <%= link_to "Voting Gallery", entries_path %>
+</nav>
+
 Your choices for <%= contest.title %>
 
 <div class = "round" style = "padding: 10px; background-color:#444;">
 
-<% if current_user.votes_for_contest(contest)  %>
+<% vc = current_user.votes_for_contest(contest) %>
+
+<% if vc.size > 0 %>
 
 <!--Work-around for a bug where a phantom vote object
     with no id or weight appears in the list--!>
 <% revised_vote_list = [] %>
-<% current_user.votes.each do |vote| %>
+<% current_user.votes_for_contest(contest).each do |vote| %>
 <%   if vote.id %>
 <%     revised_vote_list << vote %>
 <%   end %>
 <% end %>
-
 
 <table>
 
@@ -51,3 +56,4 @@ Your choices for <%= contest.title %>
 </div>
 
 <% end %>
+

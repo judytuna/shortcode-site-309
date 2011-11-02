@@ -4,31 +4,32 @@
       <%= link_to entry.title, entry_path(entry) %>
     </span></h2>
     
-    <form target="_blank" id="render_<%= entry.image_name %>"
-    	name="render_job_form"
-    	action="<%= entry.pov_server + 'cgi-bin/request.py' %>"
-    	method="post">
-    	<input type="hidden" name="code"
-    		value='<%= entry.shortcode %>' />
-    	<input type="hidden" name="name"
-	    	value=<%= entry.image_name %> />
-	    <input type="hidden" name="key"
-	    	value=<%= entry.key %> />
-    </form>
-    
     <nav>
     <%= link_to "show", entry_path(entry) %>
     <% if signed_in? && (current_user.admin? || (current_user == entry.user && entry.editable?)) %>
       | <%= link_to "edit", edit_entry_path(entry) %>
-      | <a href = "javascript: document.getElementById('render_<%= entry.image_name %>').submit()"> render </a>
       | <%= link_to "delete", entry, :method => :delete, :confirm => "You sure?",
          :title => "delete" %>
     <% end %>
     </nav>
     
+    <% status = entry.render_status %>
+    
+    <% if status.match("image ready") %>
+    
     <a href = <%= entry.image_url %> >
     <%= image_tag entry.image_url, :width=>'100%' %>
     </a>
+    
+    <% elsif status.match("thumbnail ready") %>
+    
+    <a href = <%= entry.thumbnail_url %> >
+    <%= image_tag entry.thumbnail_url, :width=>'100%' %>
+    </a>
+    
+    <% end %>
+    
+    <%= link_to "(render status)", entry_path(entry) + '/renderstatus' %>
     
     <br/>
     <br/>
