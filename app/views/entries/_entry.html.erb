@@ -58,7 +58,7 @@
       <% now = Contest.current_time %>
       Posted <%= time_ago_in_words(entry.created_at) %> ago
       <% unless entry.contest == nil %>
-        in contest <%= entry.contest.title %>
+        in <%= entry.contest.title %>
         <br/>
         <% if now < entry.contest.entrydeadline %>
           On <%= entry.contest.entrydeadline.strftime("%A %B %d, %Y at %I:%M %p %Z") %>,
