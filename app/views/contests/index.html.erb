@@ -10,7 +10,7 @@
 
 <%= will_paginate %>
 
-<%= render @contests %>
+<%= render @contests.sort_by {|c| -c.startdate.to_i} %>
 
 <%= will_paginate %>
 
