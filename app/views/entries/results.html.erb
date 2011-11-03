@@ -14,7 +14,7 @@
 <center>
 <% url = 'entries/' + entry.id.to_s %>
 <a href = <%= url %> >
-<img width = 500 src = "<%= entry.pov_server + 'images/' + entry.image_name %>"
+<img width = 500 src = "<%= Entry.pov_server + 'images/' + entry.image_name %>"
     	onerror="this.src='images/default_thumb.png';">
 <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
 </a>
@@ -45,7 +45,7 @@
       
       <br/>
       <a href = <%= url %> >
-      <img src = "<%= entry.pov_server + 'thumbnails/' + entry.image_name %>"
+      <img src = "<%= Entry.pov_server + 'thumbnails/' + entry.image_name %>"
          onerror="this.src='images/default_thumb.png';">
       <br/>
       <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
