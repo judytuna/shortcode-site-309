@@ -1,3 +1,6 @@
+
+<% if (signed_in? && current_user == entry.user) || entry.publicly_visible? %>
+
 <tr>
   <td class="entry">
     <h2><span class="title">
@@ -89,3 +92,5 @@
     
   </td>
 </tr>
+
+<% end %>

@@ -105,6 +105,15 @@ class Entry < ActiveRecord::Base
     return false
   end
   
+  def publicly_visible?
+    acquire_contest
+    now = Contest.current_time
+    if contest and now >= contest.votingend
+      return true
+    end
+    return false
+  end
+  
   private
     def hash_shortcode
       Digest::SHA2.hexdigest(shortcode + String(user_id))[0..5]
