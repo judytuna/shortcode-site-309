@@ -19,8 +19,22 @@ class Entry < ActiveRecord::Base
   validates :longcode, :length => { :maximum => 8192 }
   validates :comments, :length => { :maximum => 8192 }
   
-  default_scope :order => 'entries.created_at DESC'
+  class UniquetitleValidator < ActiveModel::EachValidator
+    def validate_each(entry, attribute, value)
+      if Entry.all.find_all{|e| e.contest == Contest.current_contest and
+                                e.user_id == entry.user_id and
+                                e.title == value and
+                                e.id != entry.id }.size > 0
+        entry.errors[attribute] << "must be unique to your other entries."
+        return false
+      end
+      return true
+    end
+  end
   
+  validates :title, :uniquetitle => true
+  
+  default_scope :order => 'entries.created_at DESC'
   
   
   def self.pov_server
