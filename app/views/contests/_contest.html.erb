@@ -26,19 +26,19 @@ least one entry will be able to vote for the winner.
 <h2>Important Dates</h2>
 
 <p>
-<b><%=h contest.entrydeadline.strftime("%A %B %d, %Y at %I:%M %p %Z") %></b>.  Entries are due.
+<b><%=h contest.entrydeadline.getlocal.strftime("%A %B %d, %Y at %I:%M %p %Z") %></b>.  Entries are due.
 All entries submitted for this contest will be saved and become part of the voting gallery.
 Contestants may no longer edit or delete their entries.  Entries are given some time
 to render before voting begins.
 </p>
 
 <p>
-<b><%=h contest.votingstart.strftime("%A %B %d, %Y at %I:%M %p %Z") %></b> Voting begins.
+<b><%=h contest.votingstart.getlocal.strftime("%A %B %d, %Y at %I:%M %p %Z") %></b> Voting begins.
 Contestents vote for their top three choices.  Contestents may not vote for their own entries.
 </p>
 
 <p>
-<b><%=h contest.votingend.strftime("%A %B %d, %Y at %I:%M %p %Z") %></b>
+<b><%=h contest.votingend.getlocal.strftime("%A %B %d, %Y at %I:%M %p %Z") %></b>
 Voting closes, contest results are posted.<br/>
 </p>
 
