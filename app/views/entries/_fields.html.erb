@@ -6,19 +6,30 @@
 </div>
 
 <div class="field">
-  <%= f.label :"shortcode" %><br />
+  <%= f.label :"shortcode" %><br/>
+  <p style = "font-size : .75em; margin-bottom : 0;">
+  Gets rendered and judged in the contest.  May not exceed 256 characters.<br/>
+  </p>
+  
   <%= f.text_area :shortcode,
     :id => "shortcode_textarea",
   	:onKeyUp => "updateTextCounters();" %><br/>
+
   <span id = "shortcode_count" value=""></span> characters left
 </div>
 
 <div class="field">
-  <%= f.label :"longcode" %><br />
+  <%= f.label :"longcode" %><br/>
+  <p style = "font-size : .75em; margin-bottom : 0;">
+  (Optional)  A longer, more human-readable version of the code.
+  </p>
   <%= f.text_area :longcode %>
 </div>
 <div class="field">
-  <%= f.label :"comments" %><br />
+  <%= f.label :"comments" %><br/>
+  <p style = "font-size : .75em; margin-bottom : 0;">
+  (Optional) Anything else you would like to add.
+  </p>
   <%= f.text_area :comments %>
 </div>
 

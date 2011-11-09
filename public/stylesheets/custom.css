@@ -165,6 +165,8 @@ td.sidebar {
 /* wafer-thin css for the signup form */
 div.field, div.actions {
   margin-bottom: 10px;
+  padding : 5px;
+  background-color : #444;
 }
 
 
