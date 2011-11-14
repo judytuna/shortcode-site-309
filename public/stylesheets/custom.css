@@ -280,8 +280,12 @@ div.entry {
   border-radius:         2px;
   
   margin-bottom: 1em;
-  background-color: #ddd;
+  background-color: #e0e1e5;
   padding: 10px;
+}
+
+div.entry {
+  color: #000;
 }
 
 div.entry a {
@@ -308,7 +312,6 @@ div.entries div {
   border: 1px solid #999;
   background-color: #EEE;
   padding: 5px;
-  color: #000;
 }
 
 span.timestamp {
