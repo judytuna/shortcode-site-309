@@ -5,8 +5,10 @@
 
 <h1>Votes</h1>
 
-<nav>
-  <%= link_to "Voting Gallery", '/contests/' + Contest.current_contest.id.to_s + '/gallery' %>
+<nav class="round">
+  <ul>
+    <li>  <%= link_to "Voting Gallery", '/contests/' + Contest.current_contest.id.to_s + '/gallery' %></li>
+  </ul>
 </nav>
 
 Your choices for <%= contest.title %>
