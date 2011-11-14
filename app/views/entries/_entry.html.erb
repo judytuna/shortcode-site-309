@@ -1,5 +1,5 @@
 
-<% if (signed_in? && current_user == entry.user) || entry.publicly_visible? %>
+<% if (signed_in? && current_user == entry.user) || entry.publicly_visible? || entry.allows_vote_from?(current_user) %>
 
   <div class="entry"> 
     <h2>

@@ -98,6 +98,9 @@ class Entry < ActiveRecord::Base
   end
   
   def acquire_contest
+    # sets the contest_id field of the entry if it doesn't have it already.
+    # this is only because we had entries in our test database before we added contests.
+    # we shouldn't need this anymore.
     now = Contest.current_time
 	if not contest
 	  Contest.all.each do |c|
@@ -111,7 +114,6 @@ class Entry < ActiveRecord::Base
   end
   
   def editable?
-    acquire_contest
     now = Contest.current_time
     if contest and now <= contest.entrydeadline
       return true
@@ -126,6 +128,10 @@ class Entry < ActiveRecord::Base
       return true
     end
     return false
+  end
+  
+  def allows_vote_from?(user)
+    Contest.current_contest and Contest.current_contest.voting_window? and user and user.may_vote?
   end
   
   private
