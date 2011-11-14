@@ -1,3 +1,5 @@
+<%= render :partial => 'mini_contest', @contests.sort_by {|c| -c.startdate.to_i} %>
+
 <% if current_user.admin? %>
 
 <h1 style="margin-top: 10px;" >Contests</h1>
@@ -13,9 +15,5 @@
 <%= render @contests.sort_by {|c| -c.startdate.to_i} %>
 
 <%= will_paginate %>
-
-<% else %>
-
-Adminstrator access only.
 
 <% end %>
