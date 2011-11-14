@@ -1,17 +1,19 @@
 
 <% if (signed_in? && current_user == entry.user) || entry.publicly_visible? %>
 
-<tr>
-  <td class="entry">
-    <h2><span class="title">
-      <%= link_to entry.title, entry_path(entry) %>
-    </span></h2>
+  <div class="entry"> 
+    <h2>
+      <span class="title">
+        <%= link_to entry.title, entry_path(entry) %>
+      </span>
+    </h2>
     
     <% if signed_in? && (current_user.admin? || (current_user == entry.user && entry.editable?)) %>
-    <nav>
-      <%= link_to "edit", edit_entry_path(entry) %> |
-      <%= link_to "delete", entry, :method => :delete, :confirm => "You sure?",
-         :title => "delete" %>
+    <nav class="round">
+      <ul>
+        <li><%= link_to "edit", edit_entry_path(entry) %></li>
+        <li><%= link_to "delete", entry, :method => :delete, :confirm => "You sure?", :title => "delete" %></li>
+      </ul>
     </nav>
     <% end %>
     
@@ -90,7 +92,6 @@
       <% end %>
 	<% end %>
     
-  </td>
-</tr>
+  </div>
 
 <% end %>

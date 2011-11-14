@@ -15,9 +15,9 @@
 </p>
 
 <% if signed_in? %>
-      	<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+  <p><%= link_to "Sign out", signout_path, :method => :delete %></p>
 <% else %>
-        <p><%= link_to "Sign up now!", signup_path, :class => "signup_button round" %></p>
+  <p><%= link_to "Sign up now!", signup_path, :class => "round signup_button" %></p>
 <% end %>
 
 <p>

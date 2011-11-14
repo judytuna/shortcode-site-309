@@ -1,19 +1,46 @@
+
+.round {
+  -moz-border-radius:    4px;
+  -webkit-border-radius: 4px;
+  border-radius:         4px;
+}
+
+.box {
+  background-color: #202125;
+  margin-bottom: 0;
+}
+
+.innerbox {
+  background-color: #202125;
+  margin-bottom: 0;
+}
+
 .container {
   width: 900px;
 }
 
 body {
-  background: #333333;
-  color: #EEEEEE;
+  background: #00010f;
+  color: #eee;
 }
 
 header {
-  padding-top: 20px;
+  background: -moz-linear-gradient(top,  rgba(80,85,95,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(80,85,95,1)), color-stop(100%,rgba(14,14,14,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(80,85,95,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(80,85,95,1) 0%,rgba(14,14,14,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(80,85,95,1) 0%,rgba(14,14,14,1) 100%); /* IE10+ */
+  background: linear-gradient(top,  rgba(80,85,95,1) 0%,rgba(14,14,14,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#50555f', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
 }
 
 header img.logo {
   padding: 1px;
-  height: 100px;
+  height: 100%;
   background: #777777;
 }
 
@@ -39,21 +66,25 @@ section h2 {
   color: #EEEEEE;
 }
 
+section h3 {
+  font-size: 130%;
+  color: #EEEEEE;
+}
 
 /* Links */
 
 a {
-  color: #111111;
+  color: #aad;
   text-decoration: none;
 }
 
 a:hover {
-  color: #DDDDDD;
+  color: #bbf;
   text-decoration: underline;
 }
 
 a:visited {
-  color: #222222;
+  color: #ccf;
 }
 
 
@@ -62,35 +93,39 @@ a:visited {
 nav {
   float: right;
   background-color: #F5F5F5;
-  padding: 0 0.7em;
   white-space: nowrap;
+  display: inline-block;
+  font-weight: bold;
+}
+
+nav ul li a {
+  color: #224;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #225;
+  text-decoration: underline;
+}
+
+nav ul li a:visited {
+  color: #555;
 }
 
 nav ul {
   margin: 0;
-  padding: 0;
+  padding: 0.2em 0.7em;
 }
 
 nav ul li {
   list-style-type: none;
   display: inline-block;
-  padding: 0.2em 0;
-  color: #333333;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
-nav ul li a {
-  padding: 0 5px;
-  font-weight: bold;
-}
 
-nav ul li a:visited {
-  color: #555555;
-}
 
-nav ul li a:hover {
-  text-decoration: underline;
-  color: #444444;
-}
 
 .userbar {
   float: right;
@@ -113,16 +148,6 @@ a.signup_button {
   font-size: 150%;
   font-weight: bold;
   padding: 20px;
-}
-
-
-
-/* Round corners */
-
-.round {
-  -moz-border-radius:    10px;
-  -webkit-border-radius: 10px;
-  border-radius:         10px;
 }
 
 /* footer */
@@ -162,11 +187,25 @@ td.sidebar {
   margin-bottom: -15px;
 }
 
-/* wafer-thin css for the signup form */
+
+/* boxes within boxes*/
 div.field, div.actions {
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+  border-radius:         3px;
   margin-bottom: 10px;
-  padding : 5px;
-  background-color : #444;
+  padding : 6px;
+  background-color : #303135;
+}
+
+div.rules {
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+  border-radius:         5px;
+  margin-bottom: 10px;
+  padding : 8px;
+  background-color : #303135;
+  color: #fff;
 }
 
 
@@ -213,6 +252,7 @@ div.field, div.actions {
 }
 
 /* listing users */
+
 ul.users {
   margin-top: 1em;
 }
@@ -221,25 +261,44 @@ ul.users {
   list-style: none;
 }
 
-/* entries (need to convert from microposts tho) */
+
+
+/* entries and the entry partial */
 
 h1.entry {
   margin-bottom: 0.3em;
 }
 
-table.entries {
+div.entries {
   margin-top: 1em;
-  border-spacing: 1em;
+  color: #000;
 }
 
-table.entries div {
-  white-space: pre-wrap;
+div.entry {
+  -moz-border-radius:    2px;
+  -webkit-border-radius: 2px;
+  border-radius:         2px;
   
-  margin-top: 0em;
-  border: 1px solid #999;
-  background-color: #EEE;
-  padding: 5px;
+  margin-bottom: 1em;
+  background-color: #ddd;
+  padding: 10px;
+}
+
+div.entry a {
+  color: #002;
+}
+
+div.entry h2 {
   color: #000;
+}
+
+div.entry label {
+  font-size: 75%;
+  color: #000;
+}
+
+div.entries div {
+  margin-top: 0em;
 }
 
 .code {
@@ -252,48 +311,13 @@ table.entries div {
   color: #000;
 }
 
-.rules {
-  color: #fff;
-  -moz-border-radius:    5px;
-  -webkit-border-radius: 5px;
-  border-radius:         5px;
-  padding: 5px;
-  background-color: #333;
-}
-
-
-table.entries tr {
-  background-color: #DDD;
-  height: 70px;
-  color: #000;
-}
-
-table.entries label {
-  font-size: 75%;
-}
-
-table.entries h2 {
-  color: #000;
-}
-
-table.entries tr td.gravatar {
-  border-top: 1px solid #ccc;
-  vertical-align: top;
-  width: 50px;
-}
-
-table.entries tr td.entry {
-  border-top: 1px solid #ccc;
-  vertical-align: top;
-  padding-top: 10px;
-}
-
-table.entries tr td.entry span.timestamp {
+span.timestamp {
   display: block;
   font-size: 85%;
   margin-top: 1em;
-  color: #666;
+  color: #555;
 }
+
 
 div.user_info img {
   padding-right: 0.1em;
