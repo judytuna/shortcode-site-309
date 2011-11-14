@@ -305,20 +305,21 @@ div.entries div {
   margin-top: 0em;
 }
 
-.code {
-  white-space: pre-wrap;
-  
-  margin-top: 0em;
-  border: 1px solid #999;
-  background-color: #EEE;
-  padding: 5px;
-}
-
 span.timestamp {
   display: block;
   font-size: 85%;
   margin-top: 1em;
   color: #555;
+}
+
+.code {
+  white-space: pre-wrap;
+  
+  margin-top: 0em;
+  border: 1px solid #999;
+  color: #000;
+  background-color: #EEE;
+  padding: 5px;
 }
 
 
@@ -346,3 +347,5 @@ form.new_entry textarea {
   height: 4em;
   margin-bottom: 0;
 }
+
+
