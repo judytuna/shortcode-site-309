@@ -61,16 +61,15 @@
     
     <span class="timestamp">
       <% now = Contest.current_time %>
-      Posted <%= time_ago_in_words(entry.created_at) %> ago
-      <% unless entry.contest == nil %>
-        in <%= entry.contest.title %>
+      <% if entry.contest %>
+      Posted in <%= entry.contest.title %>
         <br/>
         <% if now < entry.contest.entrydeadline %>
           On <%= entry.contest.entrydeadline.strftime("%A %B %d, %Y at %I:%M %p %Z") %>,
           this entry will be saved into the contest <% entry.contest.title %> and then
           made viewable for voting.
         <% end %>
-      <% end %>
+      <% end%>
     </span>
     
     <% if current_user.admin? %>

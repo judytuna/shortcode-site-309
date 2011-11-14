@@ -34,11 +34,11 @@
 		  <% end %>
 
 		  <% if signed_in? and Contest.current_contest and Contest.current_contest.voting_window? %>
-		  <li><%= link_to "Voting Gallery", entries_path %></li>
+		  <li><%= link_to "Voting Gallery", '/contests/' + Contest.current_contest.id.to_s + '/gallery' %></li>
 		  <% end %>
 		  
 		  <% if signed_in? %>
-		  <li><%= link_to "Results", results_path %></li>
+		  <li><%= link_to "Results", '/contests/' + Contest.latest_contest.id.to_s + '/results' %></li>
 		  <% end %>
 		  
 		  <% if signed_in? %>

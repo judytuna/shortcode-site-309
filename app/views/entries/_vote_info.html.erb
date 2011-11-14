@@ -6,7 +6,7 @@
 <h1>Votes</h1>
 
 <nav>
-  <%= link_to "Voting Gallery", entries_path %>
+  <%= link_to "Voting Gallery", '/contests/' + Contest.current_contest.id.to_s + '/gallery' %>
 </nav>
 
 Your choices for <%= contest.title %>

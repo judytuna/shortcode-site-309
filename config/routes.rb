@@ -20,6 +20,7 @@ PovrayShortcode::Application.routes.draw do
   resources :contests do
     member do
       get :gallery
+      get :results
     end
   end
   
@@ -42,6 +43,7 @@ PovrayShortcode::Application.routes.draw do
   match '/results', :to => 'entries#results'
   
   match '/entries/:id/renderstatus', :to => 'entries#renderstatus'
+  match '/contests/:id/gallery', :to => 'contests#gallery'
 
   root :to => 'pages#home'
 
