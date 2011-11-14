@@ -1,7 +1,9 @@
 <header>
 
   <div>
-    <div style="display: inline-block; vertical-align: top;">
+  	<div style="height:80px; margin-bottom: 15px;">
+  	
+    <div style="display: inline-block; vertical-align: top; height:100%">
      <%= link_to logo, root_path %>
     </div>
     
@@ -11,9 +13,8 @@
     </h1>
     </div>
     
-    <div class="round" style="padding: 10px;
-         display: inline-block; float: right; background-color: #444;">
-
+    <div class="round box" style="height:80%; padding: 10px;
+      display: inline-block; float: right;">
       
       <div style="font-size: 1.3em;">
         <% if signed_in? %>
@@ -23,7 +24,6 @@
 	    </div>
         <% end %>
       </div>
-      
       
       <nav class="round">
 		<ul>
@@ -62,11 +62,12 @@
       </nav>
       
     </div>
+	</div>
     
 	<% contest = Contest.current_contest %>
     <% now = Contest.current_time %>
     
-    <div style="background-color: #444; font-size:1.2em; padding: 10px; margin-top: 5px;">
+    <div class="round box" style="font-size:1.3em; padding: 10px; margin-top: 5px;">
     
     <% if contest %>
       <%= contest.title %> <%= link_to "(contest rules)", contest_path(contest) %>

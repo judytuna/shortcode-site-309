@@ -22,9 +22,9 @@
       
       <% unless @user.entries.empty? %>
       <br/>
-      <table class="entries" summary="User entries">
+      <div class="entries" summary="User entries">
         <%= render @entries %>
-      </table>
+      </div>
         <%= will_paginate @entries %>
       <% end %>
     </td>

@@ -3,8 +3,10 @@
 
 <% if current_user and current_user.admin? %>
 <nav>
-    <%= link_to "edit", edit_contest_path(contest) %> |
-    <%= link_to "show", contest_path(contest) %>
+  <ul>
+    <li><%= link_to "edit", edit_contest_path(contest) %></li>
+    <li><%= link_to "show", contest_path(contest) %></li>
+  </ul>
 </nav>
 <% end %>
 
