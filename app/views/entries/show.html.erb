@@ -1,5 +1,5 @@
 
-<% if Contest.current_contest and Contest.current_contest.voting_window? and current_user and current_user.may_vote? %>
+<% if @entry.allows_vote_from?(current_user) %>
   <%= render 'vote_info' %>
   <% if signed_in? %>
     <% if current_user.id == @entry.user_id %>
