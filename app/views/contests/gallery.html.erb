@@ -1,7 +1,6 @@
+<h1 style="margin-top: 10px;" >Entries in <%= @contest.title %></h1>
 
-<h1 style="margin-top: 10px;" >Voting Gallery</h1>
-
-<%= will_paginate %>
+<%= will_paginate @entries %>
 
 <% contest = Contest.current_contest %>
 
@@ -12,7 +11,7 @@
 <table class="thumbnail">
   <% cols = 3 %>
   <% i = 0 %>
-  <% @entries.find_all{|e| e.contest == contest}.sort_by{|e| e.image_name}.each do |entry| %>
+  <% @entries.sort_by{|e| e.image_name}.each do |entry| %>
     <% url = entry_path(entry) %>
     
     <% if i%cols==0 %> <tr> <% end %>
@@ -38,7 +37,7 @@
      	
       <a href = <%= url %> >
       <img src = "<%= entry.thumbnail_url %>"
-           onerror="this.src='images/default_thumb.png';">
+           onerror="this.src='../../images/default_thumb.png';">
       <br/>
       <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
       </a>
@@ -62,9 +61,8 @@ Must have an entry in the current contest to vote.
 
 <% end %>
 
-<%= will_paginate %>
+<%= will_paginate @entries %>
 
 <% if signed_in? %>
-  <%= render 'vote_info' %>
+  <%= render 'entries/vote_info' %>
 <% end %>
-

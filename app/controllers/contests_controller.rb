@@ -51,5 +51,10 @@ class ContestsController < ApplicationController
   def admin_user
     current_user.admin?
   end
+  
+  def gallery
+    @contest = Contest.find(params[:id])
+    @entries = @contest.entries.paginate(:page => params[:page])
+  end
 end
 
