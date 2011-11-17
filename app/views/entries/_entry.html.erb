@@ -64,10 +64,12 @@
       <% if entry.contest %>
       Posted in <%= entry.contest.title %>
         <br/>
+        <% if current_user == entry.user %>
         <% if now < entry.contest.entrydeadline %>
           On <%= entry.contest.entrydeadline.strftime("%A %B %d, %Y at %I:%M %p %Z") %>,
           this entry will be saved into the contest <% entry.contest.title %> and then
           made viewable for voting.
+        <% end %>
         <% end %>
       <% end%>
     </span>
