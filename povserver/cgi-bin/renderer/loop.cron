@@ -1,0 +1,3 @@
+PATH = "/usr/local/bin/"
+30 * * * * (cd /home/ubuntu/www/cgi-bin/renderer/; ./loop.py)
+
