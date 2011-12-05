@@ -73,15 +73,20 @@
       <%= contest.title %> <%= link_to "(contest rules)", contest_path(contest) %>
       
       <% if now >= contest.startdate and now < contest.entrydeadline %>
-        Entries due <%=h contest.entrydeadline.getlocal.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.
+        Entries due <%=h contest.entrydeadline.getlocal.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.<br/>
+        <%= time_between(contest.entrydeadline, Contest.current_time) %> left to enter.
       <% end %>
     
       <% if now >= contest.entrydeadline and now < contest.votingstart %>
         Entries are rendering.  Voting will start on <%=h contest.votingstart.getlocal.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.
+        <% if current_user and current_user.may_vote? %>
+        Come back in <%= time_between(contest.entrydeadline, Contest.current_time) %> to vote.
+        <% end %>
       <% end %>
       
       <% if now >= contest.votingstart and now < contest.votingend %>
         Voting has begun.  Votes must be submitted by <%=h contest.votingend.getlocal.strftime("%A %B %d, %Y at %I:%M %p (%Z)") %>.
+        <%= time_between(contest.votingend, Contest.current_time) %> left to vote.
       <% end %>
     
       <% if now > contest.votingend %>
