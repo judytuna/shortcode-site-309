@@ -9,46 +9,8 @@
 
 <% if contest and contest.voting_window? %>
 
-<table class="thumbnail">
-  <% cols = 3 %>
-  <% i = 0 %>
-  <% @entries.find_all{|e| e.contest == contest}.sort_by{|e| e.image_name}.each do |entry| %>
-    <% url = entry_path(entry) %>
-    
-    <% if i%cols==0 %> <tr> <% end %>
-      <td>
-      
-      <% if signed_in? %>
-        <% vote = current_user.votes.find_by_entry_id(entry.id) %>
-      <% end %>
-      
-      <% if vote && signed_in? %>
-        <div style="padding:1px; outline-style: solid;">
-      <% else %>
-        <div>
-      <% end %>
-      
-      <center>
-      
-      <% if vote && signed_in? %>
-        <%= pluralize(vote.weight, 'point') %><br/>
-      <% else %>
-        <br/>
-      <% end %>
-     	
-      <a href = <%= url %> >
-      <img src = "<%= entry.thumbnail_url %>"
-           onerror="this.src='images/default_thumb.png';">
-      <br/>
-      <h3 style="font-size: 1.1em;"><%= entry.title %></h3>
-      </a>
-      </center>
-      </div>
-      </td>
-    <% if i%cols==cols-1 %> </tr> <% end %>
-    <% i+=1 %>
-  <% end %>
-</table>
+<% render :partial => "gallery", :locals => {:entries => 
+	@entries.find_all{|e| e.contest == contest}.sort_by{|e| e.image_name} } %>
 
 <% else %>
 

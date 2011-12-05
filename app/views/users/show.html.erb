@@ -8,25 +8,24 @@
       
       <% if @user.id == current_user.id or current_user.admin? %>
       	<%= render 'entries/vote_info'%>
+      	
+        <% if Contest.current_contest and Contest.current_contest.submission_window? %>
+            <h1 style="margin-top:10px;">Entries in <%= Contest.current_contest.title %></h1>
+            <% if @user.entries_in_contest(Contest.current_contest).size == 0 %>
+            (none so far)
+            <% end %>
+            
+            <nav><ul><li><%= link_to "New Entry", newentry_path %></li></ul></nav>
+        <% end %>
+        
+        <%= render @user.entries_in_contest(Contest.current_contest) %>
       <% end %>
       
-      <h1 style="margin-top:10px;">Entries</h1>
+      <h1 style="margin-top:10px;">Entries in Previous Contests</h1>
       
-      <% if Contest.current_contest and Contest.current_contest.submission_window? %>
-      <nav>
-        <ul>
-          <li><%= link_to "New Entry", newentry_path %></li>
-        </ul>
-      </nav>
-      <% end %>
+      <%= render :partial => "entries/thumbgrid", :locals => {:entries => 
+	     @user.entries.sort_by{|e| -e.created_at.to_i} } %>
       
-      <% unless @user.entries.empty? %>
-      <br/>
-      <div class="entries" summary="User entries">
-        <%= render @entries %>
-      </div>
-        <%= will_paginate @entries %>
-      <% end %>
     </td>
   </tr>
 </table>

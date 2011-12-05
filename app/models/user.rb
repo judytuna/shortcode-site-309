@@ -67,9 +67,13 @@ class User < ActiveRecord::Base
   end
   
   def may_vote?
-    return (entries.find_all{|e| e.contest == Contest.current_contest}.size > 0)
+    return entries_in_contest(Contest.current_contest).size > 0
   end
-    
+  
+  def entries_in_contest(contest)
+    return entries.find_all{|e| e.contest == Contest.current_contest}
+  end
+  
   private
 
     def encrypt_password
