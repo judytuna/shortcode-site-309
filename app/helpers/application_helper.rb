@@ -35,11 +35,17 @@ module ApplicationHelper
 	end
 	
 	if (days < 2)
-      result << ' ' << pluralize(days, 'hour')
+	  if (hours > 0)
+        result << ' ' << pluralize(hours, 'hour')
+      end
 	end
 	
 	if (hours < 1)
-      result << ' ' << pluralize(days, 'minute') + ' ' + pluralize(days, 'second')
+	  if (minutes > 0)
+        result << ' ' << pluralize(minutes, 'minute')
+      end
+      
+      result << ' ' << pluralize(seconds, 'second')
 	end
 	
     return result
