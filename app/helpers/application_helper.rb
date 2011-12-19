@@ -26,7 +26,7 @@ module ApplicationHelper
 	difference = (difference - minutes) / 60
 	hours      =  difference % 24
 	difference = (difference - hours)   / 24
-	days       =  difference % 7
+	days       =  difference
 	
 	result = ""
 	
@@ -35,11 +35,12 @@ module ApplicationHelper
 	end
 	
 	if (days < 2)
-      result << ' ' << pluralize(days, 'hour')
-	end
+      result << ' ' << pluralize(hours, 'hour')
+	
 	
 	if (hours < 1)
-      result << ' ' << pluralize(days, 'minute') + ' ' + pluralize(days, 'second')
+      result << ' ' << pluralize(minutes, 'minute') + ' ' + pluralize(seconds, 'second')
+	end
 	end
 	
     return result
