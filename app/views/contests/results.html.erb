@@ -56,6 +56,11 @@
 
 <%= will_paginate @all_entries %>
 
+<h2>Previous Contests:</h2>
+<ul class="contests">
+  <%= render :partial => 'mini_contest', :collection => @all_contests %>
+</ul>
+
 <% else %>
 
 <% if @contest %>

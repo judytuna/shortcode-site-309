@@ -60,6 +60,7 @@ class ContestsController < ApplicationController
   def results
     @contest = Contest.find(params[:id])
     @all_entries = @contest.entries.paginate(:page => params[:page])
+    @all_contests = Contest.all
   end
 end
 
