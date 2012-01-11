@@ -64,3 +64,7 @@
 
 <% end %>
 
+<h2>Results from other Contests</h2>
+<ul class="contests">
+  <%= render :partial => 'mini_contest', :collection => @all_contests.find_all {|c| c.over?} %>
+</ul>

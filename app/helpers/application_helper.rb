@@ -26,7 +26,7 @@ module ApplicationHelper
 	difference = (difference - minutes) / 60
 	hours      =  difference % 24
 	difference = (difference - hours)   / 24
-	days       =  difference % 7
+	days       =  difference
 	
 	result = ""
 	

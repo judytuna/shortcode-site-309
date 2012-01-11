@@ -1,11 +1,13 @@
 
-<% if @entry.allows_vote_from?(current_user) %>
-  <%= render 'vote_info' %>
-  <% if signed_in? %>
-    <% if current_user.id == @entry.user_id %>
-      This entry is yours.
-    <% else %>
-      <%=  render "cast_vote_form" %>
+<% if @entry.contest == Contest.current_contest %>
+  <% if @entry.allows_vote_from?(current_user) %>
+    <%= render 'vote_info' %>
+    <% if signed_in? %>
+      <% if current_user.id == @entry.user_id %>
+        This entry is yours.
+      <% else %>
+        <%=  render "cast_vote_form" %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
