@@ -21,10 +21,14 @@
         <%= render @user.entries_in_contest(Contest.current_contest) %>
       <% end %>
       
+      <% other_entries = @user.entries_not_in_contest(Contest.current_contest) %>
+      
+      <% if other_entries.size > 0 %>
       <h1 style="margin-top:10px;">Entries in Previous Contests</h1>
       
       <%= render :partial => "entries/thumbgrid", :locals => {:entries => 
-	     @user.entries.sort_by{|e| -e.created_at.to_i} } %>
+	     other_entries.sort_by{|e| -e.created_at.to_i} } %>
+      <% end %>
       
     </td>
   </tr>

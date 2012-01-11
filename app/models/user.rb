@@ -74,6 +74,10 @@ class User < ActiveRecord::Base
     return entries.find_all{|e| e.contest == Contest.current_contest}
   end
   
+  def entries_not_in_contest(contest)
+    return entries.find_all{|e| e.contest != Contest.current_contest}
+  end
+  
   private
 
     def encrypt_password
