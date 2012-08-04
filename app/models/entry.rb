@@ -38,7 +38,7 @@ class Entry < ActiveRecord::Base
   
   
   def self.pov_server
-    "http://ec2-107-20-100-184.compute-1.amazonaws.com/"
+    "http://pscc.2-complex.com/"
   end
   
   def image_name
